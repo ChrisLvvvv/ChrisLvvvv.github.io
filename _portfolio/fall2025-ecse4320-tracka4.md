@@ -13,6 +13,8 @@ tags:
   - Performance
 ---
 
+[← Back to ECSE4320 Advanced Computer Systems Overview](/portfolio/fall2025-ecse4320/)
+
 This project examined how synchronization design impacts the scalability of concurrent data structures. I implemented a thread safe chained hash table using two locking strategies and benchmarked their behavior under different workloads and thread counts.
 
 ## Design

@@ -32,3 +32,12 @@ This course focused on performance oriented systems design across the compute st
   Collaborated in the classwide benchmarking effort by profiling block device performance using fio, sweeping queue depth, block size and read write mixes to understand the throughput and latency trade offs of SSD storage.
 
 Together, these projects strengthened my ability to reason about hardware aware optimization, measurement methodology and performance debugging across CPU, memory, concurrency and storage subsystems.
+
+---
+
+## Related Project Pages
+
+- [Project A1 - CPU Scheduling and Hardware Features](/portfolio/fall2025-ecse4320-tracka1/)
+- [Project A2 - Dense and Sparse Matmul with Roofline Analysis](/portfolio/fall2025-ecse4320-tracka2/)
+- [Project A4 - Concurrent Hash Table and Memory Coherence](/portfolio/fall2025-ecse4320-tracka4/)
+- [Classwide Project 3 - SSD Performance Profiling with fio](/portfolio/fall2025-ecse4320-classwide-ssd/)
