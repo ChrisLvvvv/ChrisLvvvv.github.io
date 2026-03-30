@@ -5,6 +5,7 @@ permalink: /portfolio/summer2024-lab3-cache/
 date: 2024-07-15
 venue: "COMP Architecture & Networks – Summer 2024"
 excerpt: "Analyzed memory hierarchy behavior through custom cache simulations and access trace evaluation."
+project_group: coursework-archive
 tags:
   - Computer Architecture
   - Cache

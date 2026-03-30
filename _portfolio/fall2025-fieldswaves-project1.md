@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-fieldswaves-project1/
 date: 2025-10-20
 venue: "ECSE 2110 Fields and Waves I – Project 1"
 excerpt: "Analytical and MATLAB based study of wave propagation, impedance transformation, reflection behavior and power flow along transmission lines at high frequencies."
+project_group: coursework-archive
 tags:
   - Electromagnetics
   - Transmission Lines

@@ -5,6 +5,7 @@ permalink: /portfolio/summer2024-lab2-assembly/
 date: 2024-06-20
 venue: "COMP Architecture & Networks – Summer 2024"
 excerpt: "Implemented low-level routines in assembly, reinforcing ISA-level reasoning and control flow handling."
+project_group: coursework-archive
 tags:
   - Assembly
   - ISA

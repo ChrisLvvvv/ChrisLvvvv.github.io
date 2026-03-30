@@ -2,16 +2,8 @@
 title: "Projects"
 permalink: /projects/
 layout: archive
-collection: portfolio
-author_profile: true
+intro: "Projects are organized into research, systems and hardware work, and a separate coursework archive rather than one flat chronological list."
 ---
 
-{% include base_path %}
-
-
-{% assign sorted = site.portfolio | sort: "date" | reverse %}
-{% for post in sorted %}
-  {% include archive-single.html %}
-{% endfor %}
-
+{% include projects-grouped.html %}
 

@@ -1,0 +1,23 @@
+identity:
+  name: "Taoyu (Chris) Lyu"
+  summary: "Electrical Engineering student focused on computer systems, hardware efficiency, and practical low-level engineering."
+  description: "I work across GPU systems, LLM inference, memory behavior, FPGA development, PCB design, and embedded systems."
+
+focus_areas:
+  - "GPU systems and LLM inference"
+  - "Memory behavior and performance bottlenecks"
+  - "FPGA and digital hardware design"
+  - "PCB and embedded systems implementation"
+
+currently_working_on:
+  - "Undergraduate research on vLLM serving and KV-cache behavior"
+  - "KV-cache compression and token prioritization strategies"
+  - "Restructuring this portfolio so research, systems work, and coursework are easier to read"
+
+quick_links:
+  - title: "View CV"
+    url: "/cv/"
+  - title: "See Publications"
+    url: "/publications/"
+  - title: "Browse Certificates"
+    url: "/certificates/"

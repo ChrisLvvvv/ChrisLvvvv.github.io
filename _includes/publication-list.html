@@ -1,0 +1,32 @@
+{% if site.author.googlescholar %}
+  <section class="page-section page-section--compact">
+    <p>You can also find my articles on <a href="{{ site.author.googlescholar }}">Google Scholar</a>.</p>
+  </section>
+{% endif %}
+
+{% if site.publication_category %}
+  {% for category in site.publication_category %}
+    {% assign entries = site.publications | where: "category", category[0] | sort: "date" | reverse %}
+    {% if entries and entries.size > 0 %}
+      <section class="page-section">
+        <div class="page-section__intro">
+          <h2 class="page-section__title">{{ category[1].title }}</h2>
+        </div>
+        <div class="publication-list">
+          {% for publication in entries %}
+            {% include publication-card.html publication=publication %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <section class="page-section">
+    <div class="publication-list">
+      {% assign entries = site.publications | sort: "date" | reverse %}
+      {% for publication in entries %}
+        {% include publication-card.html publication=publication %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

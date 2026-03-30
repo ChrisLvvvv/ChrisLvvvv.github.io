@@ -5,6 +5,7 @@ permalink: /portfolio/intro-electronics-foundation/
 date: 2023-05-01
 venue: "ECSE 2050 – Spring 2023"
 excerpt: "Summary of foundational electronics lab skills including diodes, transistors, op-amps, filters, rectifiers and measurement instrumentation."
+project_group: systems-hardware
 tags:
   - Electronics
   - Analog Circuits

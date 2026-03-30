@@ -2,12 +2,10 @@
 layout: archive
 title: "CV"
 permalink: /cv/
-author_profile: true
+intro: "CV remains visible during the redesign and will later move to a cleaner portfolio-oriented presentation."
 redirect_from:
   - /resume
 ---
-
-{% include base_path %}
 
 Education
 ======

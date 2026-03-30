@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-ecse4320-tracka4/
 date: 2025-11-05
 venue: "ECSE4320 Advanced Computer Systems"
 excerpt: "Comparison of coarse grained and striped locking for a concurrent hash table, focusing on scalability, contention and cache coherence."
+project_group: coursework-archive
 tags:
   - Concurrency
   - Hash Table

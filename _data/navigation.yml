@@ -23,5 +23,8 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Licenses & Certificates"
-    url: /certificates/ 
+  - title: "Certificates"
+    url: /certificates/
+
+  - title: "About"
+    url: /about/

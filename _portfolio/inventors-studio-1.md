@@ -5,6 +5,7 @@ permalink: /portfolio/inventors-studio-1/
 date: 2025-12-01
 venue: "ENGR 2220 – Fall 2025"
 excerpt: "Developed and delivered an engineering innovation project through iterative prototyping, user analysis, and structured design methodology."
+project_group: systems-hardware
 tags:
   - Engineering Design
   - Prototyping

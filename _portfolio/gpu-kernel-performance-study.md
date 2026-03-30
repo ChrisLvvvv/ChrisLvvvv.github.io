@@ -5,6 +5,8 @@ permalink: /portfolio/gpu-kernel-performance-study/
 date: 2025-11-15
 venue: "Undergraduate Research Project – Fall 2025"
 excerpt: "Profiled and analyzed GPU kernel behavior for Mixture-of-Experts LLM workloads, focusing on PagedAttention performance, memory fragmentation, and scheduling inefficiencies."
+project_group: research
+featured_on_home: true
 tags:
   - GPU Systems
   - LLM Inference

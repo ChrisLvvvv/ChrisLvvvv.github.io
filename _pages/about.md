@@ -1,25 +1,24 @@
 ---
-title: "Home"
-permalink: /
+title: "About"
+permalink: /about/
 layout: single
-author_profile: true
+intro: "A lighter narrative page for background, motivations, and how I approach engineering work."
 ---
 
-Hi, I’m Taoyu (Chris) Lyu.
+I’m Taoyu (Chris) Lyu, an Electrical Engineering student at Rensselaer Polytechnic Institute with a strong interest in systems work that connects theory, implementation, and measurable performance.
 
-I study Electrical Engineering at Rensselaer Polytechnic Institute (RPI).
-My focus is computer systems and hardware efficiency.
-I work on GPU systems, LLM inference, and memory behavior.
-I also build with FPGA (SystemVerilog), PCB, and embedded systems.
+## Background
 
-Current work:
-- Undergraduate research on vLLM serving and KV-cache behavior
-- Undergraduate research on KV-cache compression and token prioritization
+My path has gradually moved toward computer systems, hardware efficiency, and practical low-level engineering. I enjoy understanding how a system behaves underneath the surface, whether that means memory bottlenecks in LLM inference, control behavior in an embedded project, or the design tradeoffs inside digital hardware.
 
-Industry:
-- Hardware engineering internship on next-generation TMS devices
-- PCB design migration and engineering documentation
-- I2C-based driver integration for cost and complexity reduction
+## What I Like Working On
 
-Links:
-- GitHub: https://github.com/ChrisLvvvv
+I am especially drawn to projects involving GPU systems, LLM inference, memory behavior, FPGA development in SystemVerilog, PCB design, and embedded systems. The common thread is that these areas reward careful reasoning, practical debugging, and a willingness to work across boundaries instead of staying inside one abstraction layer.
+
+## Engineering Philosophy
+
+I like work that is concrete, testable, and technically honest. I care about implementation details, performance evidence, and clean reasoning more than buzzwords. Good engineering design, to me, should feel calm and deliberate: clear tradeoffs, understandable structure, and enough restraint that the important ideas can stand on their own.
+
+## Why This Site Exists
+
+This site is gradually being rebuilt as a quieter, more intentional portfolio. The goal is to show research, systems projects, and supporting coursework in a way that feels designed and readable, while still preserving the technical substance behind the work.

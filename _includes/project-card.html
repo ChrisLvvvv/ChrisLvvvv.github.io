@@ -1,0 +1,35 @@
+{% include base_path %}
+{% assign project = include.project %}
+{% assign variant = include.variant | default: "default" %}
+{% assign is_featured = project.featured_on_home | default: false %}
+
+<article class="project-card project-card--{{ variant }}{% if is_featured %} project-card--important{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
+  <header class="project-card__header">
+    <h3 class="project-card__title">
+      <a href="{{ base_path }}{{ project.url }}">{{ project.title }}</a>
+    </h3>
+    {% if project.date %}
+      <p class="project-card__date">
+        <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%Y" }}</time>
+      </p>
+    {% endif %}
+  </header>
+
+  {% if project.venue %}
+    <p class="project-card__venue">{{ project.venue }}</p>
+  {% endif %}
+
+{% if project.excerpt %}
+    <p class="project-card__excerpt">{{ project.excerpt }}</p>
+  {% endif %}
+
+  <div class="project-card__footer">
+  {% if project.tags and project.tags.size > 0 %}
+      <ul class="project-card__tags">
+        {% for tag in project.tags limit: 4 %}
+          <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</article>

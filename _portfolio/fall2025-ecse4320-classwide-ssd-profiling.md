@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-ecse4320-classwide-ssd/
 date: 2025-11-20
 venue: "ECSE4320 Advanced Computer Systems"
 excerpt: "Block level SSD performance study using fio, exploring throughput and latency across queue depth, block size and read write mixes."
+project_group: coursework-archive
 tags:
   - Storage
   - SSD
@@ -57,4 +58,3 @@ This classwide project profiled SSD performance using fio to understand how queu
 ## Outcome
 
 The project provided hands on experience with storage benchmarking and performance analysis. It built intuition for how SSDs respond to different workloads and how to design experiments that reveal throughput and latency trade offs that matter for real systems.
-

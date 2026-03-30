@@ -1,0 +1,21 @@
+{% assign group = include.group %}
+{% assign projects = site.portfolio | where: "project_group", group.key | sort: "date" | reverse %}
+
+{% if projects and projects.size > 0 %}
+  <section class="page-section project-group project-group--{{ group.key }}" id="{{ group.key }}">
+    <div class="page-section__intro">
+      <h2 class="page-section__title">{{ group.title }}</h2>
+      {% if group.description %}<p>{{ group.description }}</p>{% endif %}
+    </div>
+
+    <div class="project-card-list project-card-list--{{ group.key }}">
+      {% for project in projects %}
+        {% if group.key == "coursework-archive" %}
+          {% include project-card.html project=project variant="archive" %}
+        {% else %}
+          {% include project-card.html project=project variant="showcase" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

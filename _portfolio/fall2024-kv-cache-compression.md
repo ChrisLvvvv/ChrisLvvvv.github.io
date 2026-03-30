@@ -5,6 +5,8 @@ permalink: /portfolio/fall2024-kv-cache-compression/
 date: 2024-12-01
 venue: "Undergraduate Research – Fall 2024"
 excerpt: "Designed KV-cache compression and eviction strategies using bit-plane slicing, semantic clustering, and recency-aware prioritization for large-context LLM inference."
+project_group: research
+featured_on_home: true
 tags:
   - LLM Inference
   - KV Cache

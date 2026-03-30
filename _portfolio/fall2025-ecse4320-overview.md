@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-ecse4320/
 date: 2025-12-01
 venue: "ECSE4320 Advanced Computer Systems"
 excerpt: "Project set covering CPU scheduling, SIMD and sparse linear algebra, concurrent data structures and SSD storage profiling."
+project_group: coursework-archive
 tags:
   - Computer Systems
   - Performance

@@ -5,6 +5,8 @@ permalink: /portfolio/fall2024-autonomous-robot-control/
 date: 2024-12-07
 venue: "ENGR 2350 Embedded Control – Fall 2024"
 excerpt: "Autonomous ARM Cortex-M robotic control system featuring cascaded PI/PD control, sensor fusion and hierarchical FSM navigation."
+project_group: systems-hardware
+featured_on_home: true
 tags:
   - Embedded Systems
   - Robotics

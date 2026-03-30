@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-ecse4320-tracka1/
 date: 2025-10-10
 venue: "ECSE4320 Advanced Computer Systems"
 excerpt: "Experimental study of CPU affinity, scheduler oversubscription, NUMA locality and SMT interference using microbenchmarks and Linux tooling."
+project_group: coursework-archive
 tags:
   - ECSE4320
   - Computer Systems

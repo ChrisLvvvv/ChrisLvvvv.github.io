@@ -5,6 +5,7 @@ permalink: /portfolio/elevator-controller/
 date: 2023-12-01
 venue: "CPTR Components & Operations – Fall 2023"
 excerpt: "Designed a functional 4-floor elevator controller using FSM, combinational logic, and protoboard implementation."
+project_group: systems-hardware
 tags:
   - Digital Logic
   - FSM

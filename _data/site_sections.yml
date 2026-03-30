@@ -1,0 +1,62 @@
+primary_navigation:
+  - key: home
+    title: "Home"
+    url: "/"
+    current_source: "_pages/home.md"
+    current_model: "single markdown page"
+    future_model: "landing page with structured content sections"
+  - key: projects
+    title: "Projects"
+    url: "/projects/"
+    current_source: "_pages/portfolio.html + _portfolio/*.md"
+    current_model: "collection archive"
+    future_model: "project collection with richer metadata and optional grouping"
+  - key: cv
+    title: "CV"
+    url: "/cv/"
+    current_source: "_pages/cv.md"
+    current_model: "single markdown page"
+    future_model: "structured resume data or section-based markdown"
+  - key: publications
+    title: "Publications"
+    url: "/publications/"
+    current_source: "_pages/publications.html + _publications/*.md"
+    current_model: "collection archive"
+    future_model: "publication collection with clean metadata and optional external links"
+  - key: certificates
+    title: "Certificates"
+    url: "/certificates/"
+    current_source: "_pages/certificates.md + _data/certificates.yml"
+    current_model: "data-driven page"
+    future_model: "data-driven page with optional thumbnails and filtering"
+  - key: about
+    title: "About"
+    url: "/about/"
+    current_source: "_pages/about.md"
+    current_model: "single markdown page"
+    future_model: "dedicated about page with longer narrative and supporting links"
+
+content_locations:
+  pages: "_pages/"
+  projects_collection: "_portfolio/"
+  publications_collection: "_publications/"
+  certificates_data: "_data/certificates.yml"
+  cv_data_candidate: "_data/cv.json"
+  downloadable_files: "files/"
+  images: "images/"
+
+theme_coupling:
+  layouts:
+    - "_layouts/default.html"
+    - "_layouts/single.html"
+    - "_layouts/archive.html"
+  includes:
+    - "_includes/sidebar.html"
+    - "_includes/author-profile.html"
+    - "_includes/masthead.html"
+    - "_includes/archive-single.html"
+  styles:
+    - "assets/css/main.scss"
+    - "_sass/layout/_page.scss"
+    - "_sass/layout/_archive.scss"
+    - "_sass/layout/_sidebar.scss"

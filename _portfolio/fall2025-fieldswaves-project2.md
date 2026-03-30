@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-fieldswaves-project2/
 date: 2025-11-15
 venue: "ECSE 2110 Fields and Waves I – Project 2"
 excerpt: "Analytical and computational evaluation of magnetic circuits, flux distribution and electromagnetic force generation using energy and co-energy methods."
+project_group: coursework-archive
 tags:
   - Electromagnetics
   - Magnetic Circuits

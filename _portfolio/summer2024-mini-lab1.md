@@ -5,6 +5,7 @@ permalink: /portfolio/summer2024-lab1-mini/
 date: 2024-06-05
 venue: "COMP Architecture & Networks – Summer 2024"
 excerpt: "Designed a basic digital circuit using CircuitSim as the first hands-on exercise in the course."
+project_group: coursework-archive
 tags:
   - Digital Logic
   - CircuitSim

@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-intro-ecse/
 date: 2025-12-05
 venue: "Fall 2025 – ECSE Introduction Series"
 excerpt: "Cross-disciplinary foundation in embedded systems, controls, digital logic, signal processing and machine learning through a broad set of hands-on labs."
+project_group: coursework-archive
 tags:
   - Embedded Systems
   - Control Systems

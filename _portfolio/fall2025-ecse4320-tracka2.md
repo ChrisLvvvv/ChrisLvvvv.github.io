@@ -5,6 +5,7 @@ permalink: /portfolio/fall2025-ecse4320-tracka2/
 date: 2025-10-25
 venue: "ECSE4320 Advanced Computer Systems"
 excerpt: "SIMD and multithreaded optimization of dense and sparse matrix multiplication kernels, evaluated with a Roofline performance model."
+project_group: coursework-archive
 tags:
   - SIMD
   - Linear Algebra

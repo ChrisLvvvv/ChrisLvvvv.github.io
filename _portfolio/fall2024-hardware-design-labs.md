@@ -5,6 +5,7 @@ permalink: /portfolio/fall2024-hardware-design/
 date: 2024-12-03
 venue: "ECSE 4770 – Fall 2024"
 excerpt: "Summary of hardware design and RISC-V CPU construction skills from ECSE 4770, including SystemVerilog, FSMs, datapath design and multi-cycle/pipelined processors."
+project_group: coursework-archive
 tags:
   - SystemVerilog
   - Computer Architecture

@@ -1,0 +1,11 @@
+- key: "research"
+  title: "Research"
+  description: "Longer-horizon investigations focused on systems behavior, performance, and memory-efficient inference."
+
+- key: "systems-hardware"
+  title: "Systems & Hardware"
+  description: "Hands-on builds and implementation-heavy work across embedded systems, control, electronics, and digital hardware."
+
+- key: "coursework-archive"
+  title: "Coursework Archive"
+  description: "Supporting course projects, labs, and technical summaries kept visible as a separate archive."

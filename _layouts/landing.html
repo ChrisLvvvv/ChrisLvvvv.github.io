@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+{% if page.url != "/" and site.breadcrumbs %}
+  {% unless paginator %}
+    {% include breadcrumbs.html %}
+  {% endunless %}
+{% endif %}
+
+<div id="main" role="main" class="site-shell site-shell--landing">
+  <main class="landing">
+    {{ content }}
+  </main>
+</div>

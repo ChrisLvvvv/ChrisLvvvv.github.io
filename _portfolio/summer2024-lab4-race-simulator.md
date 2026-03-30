@@ -5,6 +5,7 @@ permalink: /portfolio/summer2024-lab4-race/
 date: 2024-08-01
 venue: "COMP Architecture & Networks – Summer 2024"
 excerpt: "Implemented a cycle-accurate simulator analyzing pipeline behavior, hazards and performance under race conditions."
+project_group: coursework-archive
 tags:
   - Computer Architecture
   - Pipeline

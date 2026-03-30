@@ -1,0 +1,59 @@
+{% include base_path %}
+{% assign featured_projects = site.portfolio | where: "featured_on_home", true | sort: "date" | reverse %}
+
+<section class="home-section home-section--intro">
+  <p class="home-eyebrow">Portfolio</p>
+  <div class="home-intro-grid">
+    <div class="home-intro-grid__primary">
+      <h1 class="home-title">{{ site.data.home.identity.name }}</h1>
+    </div>
+    <div class="home-intro-grid__secondary">
+      <p class="home-summary">{{ site.data.home.identity.summary }}</p>
+      <p class="home-description">{{ site.data.home.identity.description }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="page-section__intro">
+    <h2 class="page-section__title">Focus Areas</h2>
+  </div>
+  <ul class="simple-list">
+    {% for area in site.data.home.focus_areas %}
+      <li>{{ area }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="page-section">
+  <div class="page-section__intro">
+    <h2 class="page-section__title">Featured Projects</h2>
+  </div>
+  <div class="project-card-list project-card-list--featured">
+    {% for project in featured_projects limit: 3 %}
+      {% include project-card.html project=project variant="featured" %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="page-section__intro">
+    <h2 class="page-section__title">Currently Working On</h2>
+  </div>
+  <ul class="simple-list">
+    {% for item in site.data.home.currently_working_on %}
+      <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="page-section page-section--compact-links">
+  <div class="page-section__intro">
+    <h2 class="page-section__title">Selected Links</h2>
+  </div>
+  <div class="compact-link-row">
+    {% for link in site.data.home.quick_links %}
+      <a class="compact-link" href="{{ base_path }}{{ link.url }}">{{ link.title }}</a>
+    {% endfor %}
+  </div>
+</section>
