@@ -20,9 +20,6 @@ main:
   # - title: "CV"
   #   url: /cv-json/
     
-  - title: "Publications"
-    url: /publications/
-
   - title: "Certificates"
     url: /certificates/
 
