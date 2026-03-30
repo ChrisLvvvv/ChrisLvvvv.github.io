@@ -1,0 +1,67 @@
+{% include base_path %}
+
+{% assign completed_certificates = site.data.certificates | where: "status", "Completed" | sort: "completion_date" | reverse %}
+
+{% if completed_certificates and completed_certificates.size > 0 %}
+  <div class="certificates-list">
+    {% for certificate in completed_certificates %}
+      <article class="certificate-card">
+        {% if certificate.thumbnail_image and certificate.thumbnail_image != "" %}
+          <div class="certificate-card__thumb">
+            <a href="{{ base_path }}{{ certificate.thumbnail_image }}" aria-label="Open preview image for {{ certificate.title }}">
+              <img src="{{ base_path }}{{ certificate.thumbnail_image }}" alt="{{ certificate.title }} thumbnail" loading="lazy">
+            </a>
+          </div>
+        {% endif %}
+
+        <div class="certificate-card__content">
+          <header class="certificate-card__header">
+            <div>
+              <h2 class="certificate-card__title">{{ certificate.title }}</h2>
+              <p class="certificate-card__provider">{{ certificate.provider }}</p>
+            </div>
+            <p class="certificate-card__status">{{ certificate.status }}</p>
+          </header>
+
+          <dl class="certificate-card__meta">
+            <div>
+              <dt>Completed</dt>
+              <dd>{{ certificate.completion_date | date: "%B %d, %Y" }}</dd>
+            </div>
+            {% if certificate.type and certificate.type != "" %}
+              <div>
+                <dt>Type</dt>
+                <dd>{{ certificate.type }}</dd>
+              </div>
+            {% endif %}
+            {% if certificate.student_name and certificate.student_name != "" %}
+              <div>
+                <dt>Student</dt>
+                <dd>{{ certificate.student_name }}</dd>
+              </div>
+            {% endif %}
+          </dl>
+
+          {% if certificate.short_description and certificate.short_description != "" %}
+            <p class="certificate-card__description">{{ certificate.short_description }}</p>
+          {% endif %}
+
+          {% if certificate.notes and certificate.notes != "" %}
+            <p class="certificate-card__notes">{{ certificate.notes }}</p>
+          {% endif %}
+
+          <div class="certificate-card__links">
+            {% if certificate.verify_url and certificate.verify_url != "" %}
+              <a class="btn btn--primary" href="{{ certificate.verify_url }}">Validate</a>
+            {% endif %}
+            {% if certificate.local_file and certificate.local_file != "" %}
+              <a class="btn btn--inverse" href="{{ base_path }}{{ certificate.local_file }}">Open File</a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No completed certificates are listed yet.</p>
+{% endif %}

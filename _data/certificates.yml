@@ -1,0 +1,11 @@
+- title: "Claude 101"
+  provider: "Anthropic Education"
+  completion_date: 2026-03-29
+  type: "Certificate"
+  status: "Completed"
+  verify_url: ""
+  local_file: "/files/certificates/2026-03-29_anthropic_claude-101_certificate.pdf"
+  thumbnail_image: "/files/certificates/2026-03-29_anthropic_claude-101_badge.png"
+  notes: "Skilljar Certificate Validation Information"
+  short_description: ""
+  student_name: "Taoyu Lyu"

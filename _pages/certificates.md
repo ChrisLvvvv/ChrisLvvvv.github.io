@@ -5,9 +5,6 @@ layout: single
 author_profile: true
 ---
 
-Planned:
+Completed certificates are listed here in a simple, data-driven format so future additions only require a new entry in the site data file.
 
-- NVIDIA tooling / CLI
-- CUDA
-- FPGA / SystemVerilog
-- Systems
+{% include certificates-list.html %}
