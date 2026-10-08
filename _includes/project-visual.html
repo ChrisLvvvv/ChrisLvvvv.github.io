@@ -1,0 +1,103 @@
+{% if include.context == "work" %}
+{% assign diagram = include.project.slug %}
+<svg class="work-diagram work-diagram--{{ include.project.project_group }}" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <rect class="diagram-paper" width="720" height="480"/>
+  {% case diagram %}
+  {% when 'gpu-kernel-performance-study' %}
+    <text class="diagram-heading" x="36" y="38">MoE / GPU EXECUTION</text>
+    <g class="diagram-line">
+      <path d="M58 120H162M152 114l10 6-10 6M282 120H328V96H388M328 120V172H388M328 120V248H388M378 90l10 6-10 6M378 166l10 6-10 6M378 242l10 6-10 6"/>
+      <path d="M524 96H578V172H628M524 172H628M524 248H578V172M618 166l10 6-10 6M652 192V330H560M570 324l-10 6 10 6"/>
+      <path d="M152 332H90V150M84 160l6-10 6 10"/>
+    </g>
+    <g class="diagram-block">
+      <rect x="162" y="90" width="120" height="60"/>
+      <rect x="388" y="70" width="136" height="52"/><rect x="388" y="146" width="136" height="52"/><rect x="388" y="222" width="136" height="52"/>
+      <rect x="628" y="152" width="48" height="40"/>
+      <rect x="152" y="304" width="408" height="88"/>
+    </g>
+    <text x="58" y="102">Tokens</text><text x="183" y="126">Routing</text>
+    <text x="414" y="102">Expert A</text><text x="414" y="178">Expert B</text><text x="414" y="254">Expert C</text>
+    <text class="diagram-small" x="613" y="132">Combine</text>
+    <text x="174" y="329">PagedAttention / KV memory</text>
+    <g class="diagram-fill"><rect x="174" y="345" width="48" height="26"/><rect x="230" y="345" width="48" height="26"/><rect x="342" y="345" width="48" height="26"/><rect x="454" y="345" width="48" height="26"/></g>
+    <g class="diagram-line diagram-muted"><rect x="286" y="345" width="48" height="26"/><rect x="398" y="345" width="48" height="26"/><rect x="510" y="345" width="28" height="26"/></g>
+    <text class="diagram-small" x="36" y="448">Concept schematic / routing, scheduling, memory access</text>
+  {% when 'fall2024-kv-cache-compression' %}
+    <text class="diagram-heading" x="36" y="38">KV CACHE / BIT-PLANE RETENTION</text>
+    <text x="50" y="88">Token sequence</text>
+    <g class="diagram-block">
+      {% for token in (0..7) %}{% assign x = token | times: 77 | plus: 50 %}<rect x="{{ x }}" y="110" width="61" height="46"/>{% endfor %}
+    </g>
+    <text x="50" y="184">Older context</text><text x="666" y="184" text-anchor="end">Recent context</text>
+    <path class="diagram-line" d="M50 202H666M656 196l10 6-10 6M210 224V256M204 246l6 10 6-10M510 224V256M504 246l6 10 6-10"/>
+    <text class="diagram-small" x="50" y="238">Recency + semantic priority</text>
+    <g class="diagram-line">
+      <path d="M50 280H314V312H50ZM50 322H314V354H50Z"/>
+      <path class="diagram-muted diagram-dashed" d="M50 364H314V396H50Z"/>
+      <path d="M404 280H668V312H404ZM404 322H668V354H404ZM404 364H668V396H404Z"/>
+    </g>
+    <g class="diagram-fill"><rect x="50" y="280" width="264" height="32"/><rect x="50" y="322" width="264" height="32"/><rect x="404" y="280" width="264" height="116"/></g>
+    <text x="64" y="301">K planes</text><text x="64" y="343">V planes</text><text class="diagram-small diagram-muted" x="64" y="385">Evicted plane</text>
+    <text x="418" y="301">K planes</text><text x="418" y="343">V planes</text><text class="diagram-small" x="418" y="385">Retained planes</text>
+    <text class="diagram-small" x="36" y="448">Concept schematic / selective compression and eviction</text>
+  {% when 'inventors-studio-1' %}
+    <text class="diagram-heading" x="36" y="38">ENGINEERING DESIGN / ITERATION</text>
+    <g class="diagram-block"><rect x="52" y="98" width="190" height="86"/><rect x="52" y="270" width="190" height="86"/><rect x="448" y="270" width="220" height="86"/></g>
+    <text class="diagram-label" x="74" y="136">Requirements</text><text class="diagram-small" x="74" y="162">User interviews</text>
+    <text class="diagram-label" x="74" y="308">Prototype</text><text class="diagram-small" x="74" y="334">Build + refine</text>
+    <text class="diagram-label" x="470" y="308">Test + feedback</text><text class="diagram-small" x="470" y="334">Technical evaluation</text>
+    <g class="diagram-line"><path d="M147 184V270M141 260l6 10 6-10M242 313H448M438 307l10 6-10 6M558 270V141H242M252 135l-10 6 10 6"/>
+      <path d="M280 76H420V204H280ZM298 95H337V134H298ZM350 95H402M350 113H387M298 155H402M298 174H376"/>
+    </g>
+    <text class="diagram-small" x="36" y="448">Concept schematic / documented design process</text>
+  {% when 'fall2024-autonomous-robot-control' %}
+    <text class="diagram-heading" x="36" y="38">MSP432 / CLOSED-LOOP CONTROL</text>
+    <g class="diagram-block"><rect x="50" y="102" width="166" height="74"/><rect x="266" y="102" width="172" height="74"/><rect x="488" y="102" width="180" height="74"/><rect x="50" y="292" width="166" height="76"/><rect x="488" y="292" width="180" height="76"/></g>
+    <text x="69" y="132">Navigation FSM</text><text class="diagram-small" x="69" y="156">Behavior / targets</text>
+    <text x="286" y="132">PD heading</text><text class="diagram-small" x="286" y="156">IMU / compass</text>
+    <text x="508" y="132">PI wheel speed</text><text class="diagram-small" x="508" y="156">Encoder feedback</text>
+    <text x="69" y="324">Sensor fusion</text><text class="diagram-small" x="69" y="348">Heading / obstacles</text>
+    <text x="508" y="324">PWM / motors</text><text class="diagram-small" x="508" y="348">Differential drive</text>
+    <g class="diagram-line"><path d="M216 139H266M256 133l10 6-10 6M438 139H488M478 133l10 6-10 6M578 176V292M572 282l6 10 6-10M488 330H216M226 324l-10 6 10 6M133 292V176M127 186l6-10 6 10M352 252H578V176M572 186l6-10 6 10"/></g>
+    <text class="diagram-small" x="274" y="242">Wheel encoders</text><text class="diagram-small" x="252" y="320">Motion / sensing</text>
+    <text class="diagram-small" x="36" y="448">Concept schematic / heading and speed feedback paths</text>
+  {% when 'elevator-controller' %}
+    <text class="diagram-heading" x="36" y="38">4-FLOOR CONTROLLER / DIGITAL LOGIC</text>
+    <g class="diagram-block"><rect x="50" y="102" width="158" height="90"/><rect x="276" y="102" width="166" height="90"/><rect x="510" y="102" width="160" height="90"/></g>
+    <text x="70" y="140">Floor request</text><text class="diagram-small" x="70" y="167">Switch inputs</text>
+    <text x="296" y="140">State logic</text><text class="diagram-small" x="296" y="167">Up / down / hold</text>
+    <text x="530" y="140">Output decode</text><text class="diagram-small" x="530" y="167">LED + 7-segment</text>
+    <g class="diagram-line"><path d="M208 147H276M266 141l10 6-10 6M442 147H510M500 141l10 6-10 6M359 192V256H116V278"/>
+      <circle cx="116" cy="310" r="32"/><circle cx="280" cy="310" r="32"/><circle cx="444" cy="310" r="32"/><circle cx="608" cy="310" r="32"/>
+      <path d="M148 300H248M238 294l10 6-10 6M248 320H148M158 314l-10 6 10 6M312 300H412M402 294l10 6-10 6M412 320H312M322 314l-10 6 10 6M476 300H576M566 294l10 6-10 6M576 320H476M486 314l-10 6 10 6"/>
+    </g>
+    <g text-anchor="middle"><text class="diagram-label" x="116" y="317">F1</text><text class="diagram-label" x="280" y="317">F2</text><text class="diagram-label" x="444" y="317">F3</text><text class="diagram-label" x="608" y="317">F4</text><text class="diagram-small" x="360" y="386">Adjacent floor transitions</text></g>
+    <text class="diagram-small" x="36" y="448">Concept schematic / requests, state transitions, displays</text>
+  {% when 'intro-electronics-foundation' %}
+    <text class="diagram-heading" x="36" y="38">ELECTRONICS / FILTERS + AMPLIFIERS</text>
+    <text x="50" y="112">RC filter</text>
+    <g class="diagram-line"><path d="M50 166H100l8-10 12 20 12-20 12 20 12-20 12 20 8-10H316M240 166V217M216 217H264M216 231H264M240 231V282M220 282H260M227 290H253M234 298H246"/>
+      <circle cx="50" cy="166" r="4"/><circle cx="316" cy="166" r="4"/>
+      <path d="M448 136L448 264L562 200ZM392 166H448M392 230H448M562 200H668M602 200V312H392V230M420 154V178M408 166H432M408 230H432"/>
+      <circle cx="392" cy="166" r="4"/><circle cx="668" cy="200" r="4"/>
+    </g>
+    <text class="diagram-small" x="127" y="138">R</text><text class="diagram-small" x="274" y="230">C</text>
+    <text x="392" y="112">Op-amp buffer</text><text class="diagram-small" x="50" y="344">Frequency response</text><text class="diagram-small" x="392" y="344">Voltage follower</text>
+    <text class="diagram-small" x="36" y="448">Concept schematic / circuits covered in laboratory work</text>
+  {% endcase %}
+</svg>
+{% else %}
+{% assign visual_group = include.project.project_group | default: 'coursework-archive' %}
+<svg class="project-graphic project-graphic--{{ visual_group }}" viewBox="0 0 800 540" role="img" aria-label="Abstract technical illustration for {{ include.project.title }}">
+  <rect width="800" height="540" class="graphic-bg"/>
+  {% if visual_group == 'research' %}
+    <g class="graphic-orbits" fill="none"><ellipse cx="410" cy="266" rx="280" ry="142"/><ellipse cx="410" cy="266" rx="204" ry="104"/><path d="M82 359c151-63 229-194 320-159 97 38 159 188 346 105"/></g><g class="graphic-blocks"><rect x="167" y="204" width="76" height="76"/><rect x="370" y="226" width="102" height="102"/><rect x="598" y="177" width="59" height="59"/></g><path class="graphic-signal" d="M0 443h117v-55h102v-79h128v45h97v-116h144v-62h212" fill="none"/>
+  {% elsif visual_group == 'systems-hardware' %}
+    <g class="graphic-grid" fill="none"><path d="M0 90h800M0 180h800M0 270h800M0 360h800M0 450h800M100 0v540M200 0v540M300 0v540M400 0v540M500 0v540M600 0v540M700 0v540"/></g><path class="graphic-route" d="M72 430h118v-92h118V194h178v88h117V116h125" fill="none"/><g class="graphic-nodes"><circle cx="190" cy="338" r="12"/><circle cx="308" cy="194" r="12"/><circle cx="486" cy="282" r="12"/><circle cx="603" cy="116" r="12"/></g>
+  {% else %}
+    <g class="graphic-waves" fill="none"><path d="M-20 418c90-176 182-176 274 0s184 176 276 0 184-176 276 0"/><path d="M-20 350c90-176 182-176 274 0s184 176 276 0 184-176 276 0"/><path d="M-20 282c90-176 182-176 274 0s184 176 276 0 184-176 276 0"/></g><circle class="graphic-core" cx="400" cy="270" r="91"/><path class="graphic-axis" d="M70 270h660M400 42v456"/>
+  {% endif %}
+  <text x="38" y="56">TL / {{ include.index | default: '01' }}</text><text x="762" y="504" text-anchor="end">{{ include.project.date | date: '%Y' }}</text>
+</svg>
+{% endif %}

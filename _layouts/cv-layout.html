@@ -1,39 +1,24 @@
 ---
-layout: compress
+layout: default
 ---
-
-{% include base_path %}
-
-<!doctype html>
-<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %} | {{ site.name | default: site.title }}</title>
-    {% include head.html %}
-    {% include head/custom.html %}
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/cv-layout.css">
-  </head>
-
-  <body class="cv-layout">
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
-
-    <div id="main" role="main">
-      <div class="container">
-        {{ content }}
-      </div>
+{% assign resume_files = site.static_files | where: 'path', page.resume_pdf %}
+<main id="main" class="site-main cv-shell" data-page="resume" data-resume-state="{% if resume_files.size > 0 %}pdf{% else %}fallback{% endif %}">
+  <header class="resume-header">
+    <h1>{{ page.title }}</h1>
+    {% if resume_files.size > 0 %}
+    <div class="resume-actions">
+      <a class="resume-download" href="{{ page.resume_pdf | relative_url }}" download="Taoyu_Lyu_Resume.pdf">Download PDF <span aria-hidden="true">↓</span></a>
+      <a class="resume-open" href="{{ page.resume_pdf | relative_url }}" target="_blank" rel="noopener">Open Resume <span aria-hidden="true">↗</span></a>
     </div>
-
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
-
-    {% include scripts.html %}
-
-  </body>
-</html>
+    {% endif %}
+  </header>
+  {% if resume_files.size > 0 %}
+  <div class="resume-preview" aria-label="Resume PDF preview">
+    <object class="resume-pdf" data="{{ page.resume_pdf | relative_url }}" type="application/pdf" title="Taoyu Lyu Resume">
+      <p><a href="{{ page.resume_pdf | relative_url }}">Open Resume</a></p>
+    </object>
+  </div>
+  {% else %}
+  <div class="resume-document" itemprop="text">{{ content }}</div>
+  {% endif %}
+</main>

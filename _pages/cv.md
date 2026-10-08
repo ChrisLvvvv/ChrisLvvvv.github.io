@@ -1,8 +1,9 @@
 ---
-layout: single
-title: "CV"
+layout: cv-layout
+title: "Resume"
 permalink: /cv/
-intro: "Electrical engineering student focused on computer systems, hardware efficiency, embedded systems, and implementation-heavy research."
+resume_page: true
+resume_pdf: /files/Taoyu_Lyu_Resume.pdf
 redirect_from:
   - /resume
 ---
@@ -184,7 +185,6 @@ redirect_from:
   <section class="cv-section">
     <div class="cv-section__heading">
       <h2>Selected Projects</h2>
-      <p class="cv-section__note">A compact project snapshot. <a href="/projects/">View the full Projects page</a>.</p>
     </div>
 
     <article class="cv-entry cv-entry--compact">

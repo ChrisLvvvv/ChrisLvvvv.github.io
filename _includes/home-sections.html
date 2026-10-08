@@ -1,59 +1,106 @@
-{% include base_path %}
 {% assign featured_projects = site.portfolio | where: "featured_on_home", true | sort: "date" | reverse %}
 
-<section class="home-section home-section--intro">
-  <p class="home-eyebrow">Portfolio</p>
-  <div class="home-intro-grid">
-    <div class="home-intro-grid__primary">
-      <h1 class="home-title">{{ site.data.home.identity.name }}</h1>
+<section class="opening-hero" data-opening-hero aria-labelledby="home-title">
+  <div class="opening-hero__art" data-cursor-field aria-hidden="true">
+    <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+      <g class="hero-board">
+        <rect x="1045" y="157" width="280" height="280" rx="2"/>
+        <rect x="1102" y="214" width="166" height="166"/>
+        <rect x="1142" y="254" width="86" height="86"/>
+        <rect x="329" y="610" width="246" height="158"/>
+        <rect x="390" y="658" width="124" height="62"/>
+      </g>
+      <g class="hero-buses">
+        <path d="M0 275h252v115h186v102h180v-94h221v-122h206"/>
+        <path d="M0 323h204v112h188v109h278v-92h234v-77h141"/>
+        <path d="M575 688h207v-79h162v-112h101"/>
+        <path d="M1325 238h116v-96h159"/>
+        <path d="M1325 296h172v93h103"/>
+        <path d="M1325 355h88v160h187"/>
+      </g>
+      <g class="hero-thin">
+        <path d="M86 782V657h123v-85h168"/>
+        <path d="M782 609v142h155v112h247"/>
+        <path d="M944 497V323h101"/>
+        <path d="M252 275V125h203"/>
+        <path d="M204 435H64v132H0"/>
+      </g>
+      <g class="hero-nodes">
+        <circle cx="252" cy="390" r="5"/><circle cx="438" cy="492" r="5"/>
+        <circle cx="618" cy="398" r="5"/><circle cx="839" cy="276" r="5"/>
+        <circle cx="782" cy="609" r="5"/><circle cx="944" cy="497" r="5"/>
+        <circle cx="1325" cy="296" r="5"/><circle cx="1413" cy="515" r="5"/>
+      </g>
+      <g class="hero-pins">
+        <path d="M1080 157v-38m35 38v-38m35 38v-38m35 38v-38m35 38v-38m35 38v-38m35 38v-38"/>
+        <path d="M1080 437v38m35-38v38m35-38v38m35-38v38m35-38v38m35-38v38m35-38v38"/>
+      </g>
+    </svg>
+  </div>
+  <div class="opening-hero__content">
+    <h1 id="home-title" data-hero-reveal><span>Taoyu</span> <span>Lyu</span></h1>
+  </div>
+  <div class="opening-hero__identity" data-hero-reveal>
+    <p>M.S.E. EE · UPenn</p>
+    <p>B.S. EE · RPI</p>
+    <p>Computer Architecture &amp; Digital IC Design</p>
+  </div>
+  <a class="opening-hero__scroll" href="#about" aria-label="Continue to About"><span>Scroll</span><i aria-hidden="true"></i></a>
+</section>
+
+<section class="about-spread" id="about" aria-labelledby="about-title">
+  <h2 id="about-title">About</h2>
+  <div class="about-spread__copy">
+    <p>I am an M.S.E. student in Electrical Engineering at the University of Pennsylvania, focused on computer architecture and digital IC design. I received my B.S. in Electrical Engineering from Rensselaer Polytechnic Institute, with a minor in Economics.</p>
+    <p>My background spans processor microarchitecture, RTL design, cache and memory systems, and hardware-aware AI systems. I have designed and verified RISC-V processors in SystemVerilog, including pipelined and out-of-order architectures with register renaming, reorder buffers, reservation stations, load/store queues, and cache coherence.</p>
+    <p>My research has also focused on GPU-based AI inference, including KV-cache efficiency, scheduling behavior, and vLLM/PagedAttention workloads. At Penn, I am continuing to work across computer architecture, SoC design, digital IC design, and hardware/software co-design, with particular interest in CPU/GPU architectures and AI accelerators.</p>
+  </div>
+</section>
+
+<section class="work-selector" id="selected-work" aria-labelledby="work-title" data-work-selector>
+  <header class="work-selector__header">
+    <h2 id="work-title">Selected Work</h2>
+    <a href="{{ '/projects/' | relative_url }}">View all projects <span aria-hidden="true">↗</span></a>
+  </header>
+  <div class="work-browser">
+    <button class="work-browser__arrow work-browser__arrow--previous" type="button" data-work-prev aria-label="Previous projects"><span aria-hidden="true">←</span></button>
+    <div class="work-browser__viewport" data-work-viewport>
+      <div class="work-browser__track" data-work-track>
+        {% for project in featured_projects limit: 3 %}
+          <article class="work-tile" data-work-slide>
+            <a class="work-tile__visual" href="{{ project.url | relative_url }}" aria-label="View {{ project.title }}" data-cursor-field>
+              {% include selected-work-visual.html project=project index=forloop.index %}
+              <span class="work-tile__summary">{{ project.excerpt }}</span>
+            </a>
+            <div class="work-tile__caption">
+              <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+              <p>0{{ forloop.index }} / {{ project.date | date: "%Y" }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
     </div>
-    <div class="home-intro-grid__secondary">
-      <p class="home-summary">{{ site.data.home.identity.summary }}</p>
-      <p class="home-description">{{ site.data.home.identity.description }}</p>
-    </div>
+    <button class="work-browser__arrow work-browser__arrow--next" type="button" data-work-next aria-label="Next projects"><span aria-hidden="true">→</span></button>
   </div>
 </section>
 
-<section class="page-section">
-  <div class="page-section__intro">
-    <h2 class="page-section__title">Focus Areas</h2>
+<section class="opportunity-section" id="contact" aria-labelledby="contact-title">
+  <div class="opportunity-section__statement">
+    <h2 id="contact-title">Open to Summer 2027 / Fall 2027 Internships</h2>
+    <p>Interested in computer architecture, RTL, digital IC design, and hardware systems roles.</p>
   </div>
-  <ul class="simple-list">
-    {% for area in site.data.home.focus_areas %}
-      <li>{{ area }}</li>
-    {% endfor %}
-  </ul>
-</section>
-
-<section class="page-section">
-  <div class="page-section__intro">
-    <h2 class="page-section__title">Featured Projects</h2>
-  </div>
-  <div class="project-card-list project-card-list--featured">
-    {% for project in featured_projects limit: 3 %}
-      {% include project-card.html project=project variant="featured" %}
-    {% endfor %}
-  </div>
-</section>
-
-<section class="page-section">
-  <div class="page-section__intro">
-    <h2 class="page-section__title">Currently Working On</h2>
-  </div>
-  <ul class="simple-list">
-    {% for item in site.data.home.currently_working_on %}
-      <li>{{ item }}</li>
-    {% endfor %}
-  </ul>
-</section>
-
-<section class="page-section page-section--compact-links">
-  <div class="page-section__intro">
-    <h2 class="page-section__title">Selected Links</h2>
-  </div>
-  <div class="compact-link-row">
-    {% for link in site.data.home.quick_links %}
-      <a class="compact-link" href="{{ base_path }}{{ link.url }}">{{ link.title }}</a>
-    {% endfor %}
+  <div class="contact-grid" aria-label="Contact links">
+    <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
+      <img src="{{ '/assets/icons/github.svg' | relative_url }}" alt="">
+    </a>
+    <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}/" aria-label="LinkedIn">
+      <img src="{{ '/assets/icons/linkedin.svg' | relative_url }}" alt="">
+    </a>
+    <a href="mailto:Taoyu9536@gmail.com" aria-label="Personal email">
+      <img src="{{ '/assets/icons/email.svg' | relative_url }}" alt="">
+    </a>
+    <a class="contact-grid__penn" href="mailto:lyut2@engineering.upenn.edu" aria-label="Penn email">
+      <img src="{{ '/UniversityofPennsylvania_Shield_RGB-2.png' | relative_url }}" alt="">
+    </a>
   </div>
 </section>

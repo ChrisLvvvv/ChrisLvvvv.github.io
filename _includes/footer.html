@@ -1,24 +1,22 @@
-{% include base_path %}
-
-<div class="page__footer-inner">
-  <div class="page__footer-meta">
-    <p class="page__footer-title">{{ site.name | default: site.title }}</p>
-    <p class="page__footer-note">A quiet portfolio for research, systems, hardware, and implementation-focused work.</p>
+{% if page.url == '/' %}
+  <div class="home-footer">
+    <p>Taoyu Lyu · 吕涛余</p>
+    <p>© 2026 Taoyu Lyu</p>
   </div>
-
-  <div class="page__footer-links">
-    {% if site.author.github %}
+{% else %}
+  {% unless page.work_index or page.resume_page %}
+  <div class="footer-lead" data-reveal>
+    <p>Open to thoughtful conversations about architecture, hardware, and systems.</p>
+    <a href="mailto:{{ site.author.email }}">{{ site.author.email }} <span aria-hidden="true">↗</span></a>
+  </div>
+  {% endunless %}
+  <div class="footer-base">
+    <p>Taoyu Lyu</p>
+    <div>
       <a href="https://github.com/{{ site.author.github }}">GitHub</a>
-    {% endif %}
-    {% if site.author.linkedin %}
-      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a>
-    {% endif %}
-    <a href="{{ base_path }}/cv/">CV</a>
-    <a href="{{ base_path }}/projects/">Projects</a>
+      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}/">LinkedIn</a>
+      <a href="{{ '/cv/' | relative_url }}">Resume</a>
+    </div>
+    <p>© {{ site.time | date: '%Y' }} · Troy, NY</p>
   </div>
-</div>
-
-<div class="page__footer-copyright">
-  <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</span>
-  <span>Last updated {{ "now" | date: '%Y-%m-%d' }}</span>
-</div>
+{% endif %}

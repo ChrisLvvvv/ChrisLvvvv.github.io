@@ -1,0 +1,32 @@
+{% assign visual_title = include.project.title %}
+<svg class="selected-graphic" viewBox="0 0 1000 700" role="img" aria-label="Technical illustration for {{ visual_title }}">
+  <rect class="selected-graphic__ground" width="1000" height="700"/>
+  {% if visual_title contains 'GPU' %}
+    <g class="gpu-memory" fill="none">
+      <rect x="116" y="127" width="360" height="370"/>
+      <rect x="158" y="172" width="76" height="76"/><rect x="250" y="172" width="76" height="76"/><rect x="342" y="172" width="76" height="76"/>
+      <rect x="158" y="264" width="76" height="76"/><rect x="250" y="264" width="76" height="76"/><rect x="342" y="264" width="76" height="76"/>
+      <rect x="158" y="356" width="76" height="76"/><rect x="250" y="356" width="76" height="76"/><rect x="342" y="356" width="76" height="76"/>
+      <path d="M476 212h122v-84h113v84h173M476 312h168v0h240M476 412h122v82h113v-82h173"/>
+      <path class="signal-hot" d="M196 210h92v92h92v92h218v-82h286"/>
+    </g>
+    <g class="gpu-schedule"><circle cx="711" cy="128" r="7"/><circle cx="644" cy="312" r="7"/><circle cx="711" cy="494" r="7"/><circle cx="884" cy="312" r="7"/></g>
+  {% elsif visual_title contains 'KV Cache' %}
+    <g class="cache-planes" fill="none">
+      <rect x="138" y="154" width="452" height="304"/><rect x="174" y="190" width="452" height="304"/><rect x="210" y="226" width="452" height="304"/>
+      <path d="M255 282h362M255 330h362M255 378h362M255 426h362M331 226v304M421 226v304M511 226v304"/>
+      <path class="signal-hot" d="M662 282h98v-92h108M662 378h150v76h98M662 474h76v-22"/>
+    </g>
+    <g class="cache-nodes"><circle cx="760" cy="190" r="8"/><circle cx="812" cy="454" r="8"/><circle cx="738" cy="452" r="8"/></g>
+  {% else %}
+    <g class="control-loop" fill="none">
+      <circle cx="500" cy="350" r="174"/><circle cx="500" cy="350" r="58"/>
+      <path d="M500 176v116M500 408v116M326 350h116M558 350h116"/>
+      <rect x="102" y="296" width="164" height="108"/><rect x="734" y="296" width="164" height="108"/>
+      <path d="M266 350h60M674 350h60"/>
+      <path class="signal-hot" d="M184 296V176h316M816 404v120H500"/>
+      <path d="M414 489l-92 78M586 489l92 78"/>
+    </g>
+    <g class="control-nodes"><circle cx="500" cy="176" r="8"/><circle cx="326" cy="350" r="8"/><circle cx="674" cy="350" r="8"/><circle cx="500" cy="524" r="8"/></g>
+  {% endif %}
+</svg>

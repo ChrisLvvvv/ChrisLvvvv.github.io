@@ -1,21 +1,28 @@
 identity:
-  name: "Taoyu (Chris) Lyu"
-  summary: "Electrical Engineering student focused on computer systems, hardware efficiency, and practical low-level engineering."
-  description: "I work across GPU systems, LLM inference, memory behavior, FPGA development, PCB design, and embedded systems."
+  name: "Taoyu Lyu"
+  display_name: "Taoyu / Chris Lyu"
+  discipline: "Computer architecture · RTL · digital systems"
+  summary: "I study how computing systems move, store, and transform information — from RTL and embedded control to GPU memory behavior."
+  description: "Electrical Engineering at Rensselaer Polytechnic Institute. Working across computer architecture, hardware design, LLM inference, and low-level systems."
 
 focus_areas:
-  - "GPU systems and LLM inference"
-  - "Memory behavior and performance bottlenecks"
-  - "FPGA and digital hardware design"
-  - "PCB and embedded systems implementation"
+  - number: "01"
+    title: "Architecture"
+    detail: "Processors, memory hierarchy, scheduling, and performance analysis."
+  - number: "02"
+    title: "Digital Design"
+    detail: "RTL, FPGA workflows, datapaths, finite-state machines, and verification."
+  - number: "03"
+    title: "Intelligent Systems"
+    detail: "GPU inference, KV-cache behavior, embedded control, and sensor-driven systems."
 
 currently_working_on:
   - "Undergraduate research on vLLM serving and KV-cache behavior"
   - "KV-cache compression and token prioritization strategies"
-  - "Restructuring this portfolio so research, systems work, and coursework are easier to read"
+  - "GPU kernels and memory-aware scheduling for efficient inference"
 
 quick_links:
-  - title: "View CV"
+  - title: "Selected work"
+    url: "/projects/"
+  - title: "Curriculum vitae"
     url: "/cv/"
-  - title: "Browse Certificates"
-    url: "/certificates/"

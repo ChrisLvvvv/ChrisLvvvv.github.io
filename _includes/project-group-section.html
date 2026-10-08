@@ -1,21 +1,39 @@
 {% assign group = include.group %}
 {% assign projects = site.portfolio | where: "project_group", group.key | sort: "date" | reverse %}
-
-{% if projects and projects.size > 0 %}
-  <section class="page-section project-group project-group--{{ group.key }}" id="{{ group.key }}">
-    <div class="page-section__intro">
-      <h2 class="page-section__title">{{ group.title }}</h2>
-      {% if group.description %}<p>{{ group.description }}</p>{% endif %}
-    </div>
-
-    <div class="project-card-list project-card-list--{{ group.key }}">
-      {% for project in projects %}
-        {% if group.key == "coursework-archive" %}
-          {% include project-card.html project=project variant="archive" %}
-        {% else %}
-          {% include project-card.html project=project variant="showcase" %}
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
+{% if projects.size > 0 %}
+<section class="work-group work-group--{{ group.key }}" id="{{ group.key }}" aria-labelledby="{{ group.key }}-title">
+  <header class="work-group__header">
+    <span>0{{ include.number }}</span>
+    <h2 id="{{ group.key }}-title">{{ group.title }}</h2>
+  </header>
+  {% if group.key == 'coursework-archive' %}
+  <ul class="coursework-list">
+    {% for project in projects %}
+    <li>
+      <a class="coursework-row" href="{{ project.url | relative_url }}">
+        <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: '%Y' }}</time>
+        <h3>{{ project.title }}</h3>
+        {% if project.tags.first %}<span class="coursework-row__category">{{ project.tags.first }}</span>{% endif %}
+        <span class="coursework-row__arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div class="work-list">
+    {% for project in projects %}
+    <article class="work-row">
+      <div class="work-row__main">
+        <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: '%Y.%m' }}</time>
+        <h3><a href="{{ project.url | relative_url }}">{{ project.title }} <span class="work-row__arrow" aria-hidden="true">↗</span></a></h3>
+        {% if project.excerpt %}<p>{{ project.excerpt }}</p>{% endif %}
+      </div>
+      <a class="work-row__visual" href="{{ project.url | relative_url }}" tabindex="-1" aria-hidden="true">
+        {% include project-visual.html project=project context="work" %}
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
 {% endif %}

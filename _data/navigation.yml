@@ -4,24 +4,12 @@
 # links. Removing a link prevents it from showing in the header, but does not
 # prevent it from being included in the site.
 #
-# NOTE that only one of the CV options should be selected, the first is for the
-#      Markdown formatted page while the second is generated using JSON.
-
 main:
   - title: "Home"
     url: /
-  
-  - title: "Projects"
+
+  - title: "Work"
     url: /projects/
 
-  - title: "CV"
+  - title: "Resume"
     url: /cv/
-
-  # - title: "CV"
-  #   url: /cv-json/
-    
-  - title: "Certificates"
-    url: /certificates/
-
-  - title: "About"
-    url: /about/

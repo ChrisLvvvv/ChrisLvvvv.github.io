@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<main id="main" class="site-main project-page">
+  <article itemscope itemtype="https://schema.org/CreativeWork">
+    <header class="project-hero">
+      <div class="project-hero__heading" data-hero-reveal>
+        <a class="back-link" href="{{ '/projects/' | relative_url }}"><span aria-hidden="true">←</span> Work index</a>
+        <p class="section-code">{{ page.project_group | replace: '-', ' ' }} / {{ page.date | date: '%Y' }}</p>
+        <h1 itemprop="headline">{{ page.title }}</h1>
+        {% if page.excerpt %}<p class="project-hero__summary" itemprop="description">{{ page.excerpt }}</p>{% endif %}
+      </div>
+      <div class="project-hero__visual" data-hero-reveal data-cursor-field>
+        {% include project-visual.html project=page context="detail" %}
+      </div>
+      <div class="project-hero__meta" data-hero-reveal>
+        <div><span>Context</span><p>{{ page.venue | default: 'Independent work' }}</p></div>
+        <div><span>Year</span><p>{{ page.date | date: '%Y' }}</p></div>
+        {% if page.tags %}<div class="project-hero__tags"><span>Field</span><p>{{ page.tags | slice: 0, 4 | join: ' · ' }}</p></div>{% endif %}
+      </div>
+    </header>
+    <div class="project-body">
+      <aside class="project-body__rail" aria-label="Project information" data-reveal>
+        <span class="rail-index">PROJECT STUDY</span>
+        <span class="rail-line" aria-hidden="true"></span>
+        <span>{{ page.date | date: '%m / %Y' }}</span>
+      </aside>
+      <div class="prose prose--project" itemprop="text">
+        {{ content }}
+      </div>
+    </div>
+    <footer class="project-next" data-reveal>
+      <p class="section-code">Continue exploring</p>
+      <a href="{{ '/projects/' | relative_url }}">All projects <span aria-hidden="true">↗</span></a>
+    </footer>
+  </article>
+</main>
