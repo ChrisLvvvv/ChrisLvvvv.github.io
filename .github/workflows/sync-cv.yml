@@ -1,0 +1,85 @@
+name: Sync CV from Overleaf
+
+# Source: resume.tex in the private repo ChrisLvvvv/CV_Git (linked to Overleaf).
+# Needs secret CV_REPO_TOKEN: fine-grained PAT, repository access = CV_Git only,
+# permission Contents: Read-only.
+
+on:
+  schedule:
+    - cron: "23 * * * *"        # hourly; skips quickly when CV_Git has not changed
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild even if CV_Git has not changed"
+        type: boolean
+        default: false
+  push:
+    branches: [master]
+    paths:
+      - scripts/cv_from_tex.py
+      - .github/workflows/sync-cv.yml
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-cv
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out CV source
+        uses: actions/checkout@v4
+        with:
+          repository: ChrisLvvvv/CV_Git
+          token: ${{ secrets.CV_REPO_TOKEN }}
+          path: cv-src
+
+      - name: Decide whether to rebuild
+        id: check
+        run: |
+          new_sha=$(git -C cv-src rev-parse HEAD)
+          old_sha=$(python3 -c "import json;print(json.load(open('_data/cv_tex.json')).get('source_sha') or '')" 2>/dev/null || true)
+          echo "sha=$new_sha" >> "$GITHUB_OUTPUT"
+          if [ "$new_sha" != "$old_sha" ] || [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.force }}" = "true" ]; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "CV_Git unchanged ($new_sha); nothing to do."
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Compile PDF
+        if: steps.check.outputs.build == 'true'
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          working_directory: cv-src
+
+      - name: Generate page data and copy PDF
+        if: steps.check.outputs.build == 'true'
+        run: |
+          python3 scripts/cv_from_tex.py cv-src/resume.tex _data/cv_tex.json "${{ steps.check.outputs.sha }}"
+          mkdir -p files
+          cp cv-src/resume.pdf files/Taoyu_Lyu_CV.pdf
+
+      - name: Commit and rebuild site
+        if: steps.check.outputs.build == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/cv_tex.json files/Taoyu_Lyu_CV.pdf
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Sync CV from Overleaf (CV_Git ${{ steps.check.outputs.sha }})"
+          git push
+          # Pushes made with GITHUB_TOKEN may not start the branch-based Pages build; request one.
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request failed; it will rebuild on the next push."

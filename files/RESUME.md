@@ -1,15 +1,21 @@
-# Resume PDF
+# Resume / CV
 
-The Resume page stays at `/cv/`. Its PDF source is `/files/Taoyu_Lyu_Resume.pdf`.
+The `/cv/` page and `Taoyu_Lyu_CV.pdf` in this folder are generated automatically.
+Do not edit them here.
 
-Update the document without changing website templates:
+Source of truth: `resume.tex` in the private repo `ChrisLvvvv/CV_Git`, which is
+linked to the Overleaf CV project.
 
-1. Edit the resume in Overleaf and compile it.
-2. Download the compiled PDF.
-3. Save it in this directory as `Taoyu_Lyu_Resume.pdf`, replacing the previous PDF if present.
-4. Run `bundle exec jekyll build` to verify the site.
-5. Commit and push the PDF when ready to deploy.
+To update:
 
-Jekyll checks for that exact path during each build. When present, the Resume page displays the native PDF preview and Open Resume / Download PDF actions. When absent, it displays the original factual CV content from `_pages/cv.md` and omits all PDF controls. On mobile, the PDF actions replace the embedded preview.
+1. Edit the CV in Overleaf.
+2. Overleaf → Menu → GitHub → **Push Overleaf changes to GitHub**.
+3. The "Sync CV from Overleaf" workflow (`.github/workflows/sync-cv.yml`) runs
+   hourly, or run it right away from the Actions tab → Sync CV from Overleaf →
+   Run workflow. It compiles the PDF, regenerates `_data/cv_tex.json`, commits
+   both, and starts a Pages rebuild.
 
-The website does not compile LaTeX or alter the PDF. Keep the compiled document's original format and page size.
+The parser is `scripts/cv_from_tex.py`. It expects the current template:
+`\subsection*{\Large Section}`, entries as `\item \headerrow{..}{..} \headerrow{..}{..}`
+followed by `itemize*` bullets, and skills as `\item \textbf{Label:} text`.
+The phone number is never exported to the web page.
