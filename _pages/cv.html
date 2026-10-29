@@ -1,0 +1,68 @@
+---
+layout: cv-layout
+title: "Resume"
+permalink: /cv/
+resume_page: true
+resume_pdf: /files/Taoyu_Lyu_CV.pdf
+summary: "Computer systems, hardware design, GPU inference, embedded control, and performance-oriented engineering."
+redirect_from:
+  - /resume
+---
+{% comment %}
+  Generated content: everything below renders _data/cv_tex.json, which the
+  "Sync CV from Overleaf" workflow builds from resume.tex in ChrisLvvvv/CV_Git.
+  Edit the CV in Overleaf, not here. Only the summary line above is site-only.
+{% endcomment %}
+{% assign cv = site.data.cv_tex %}
+<div class="cv-page">
+  <section class="cv-hero">
+    <div class="cv-hero__main">
+      <p class="cv-hero__name">{{ cv.name }}</p>
+      {% if page.summary %}<p class="cv-hero__summary">{{ page.summary }}</p>{% endif %}
+    </div>
+    <div class="cv-hero__contact">
+      {% if cv.contact.email %}<p><a href="mailto:{{ cv.contact.email }}">{{ cv.contact.email }}</a></p>{% endif %}
+      {% if cv.contact.linkedin %}<p><a href="https://www.linkedin.com/in/{{ cv.contact.linkedin }}/">linkedin.com/in/{{ cv.contact.linkedin }}</a></p>{% endif %}
+      {% if cv.contact.github %}<p><a href="https://github.com/{{ cv.contact.github }}">github.com/{{ cv.contact.github }}</a></p>{% endif %}
+    </div>
+  </section>
+{% for section in cv.sections %}
+  <section class="cv-section">
+    <div class="cv-section__heading">
+      <h2>{{ section.title }}</h2>
+    </div>
+  {% if section.kind == "skills" %}
+    <div class="cv-skill-groups">
+    {% for group in section.groups %}
+      <div class="cv-skill-group">
+        {% if group.label != "" %}<h3>{{ group.label }}</h3>{% endif %}
+        <p>{{ group.text }}</p>
+      </div>
+    {% endfor %}
+    </div>
+  {% else %}
+    {% for entry in section.entries %}
+    <article class="cv-entry">
+      <header class="cv-entry__header">
+        <div>
+          <h3>{{ entry.title }}</h3>
+          {% for sub in entry.subheads %}<p class="cv-entry__subhead">{{ sub }}</p>{% endfor %}
+        </div>
+        <div class="cv-entry__meta">
+          {% for m in entry.meta %}<p>{{ m }}</p>{% endfor %}
+        </div>
+      </header>
+      {% if entry.bullets.size > 0 %}
+      <div class="cv-entry__body">
+        <ul>
+          {% for b in entry.bullets %}<li>{{ b }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  {% endif %}
+  </section>
+{% endfor %}
+</div>
