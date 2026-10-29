@@ -12,5 +12,13 @@ layout: default
     </div>
     {% endif %}
   </header>
+  {% if resume_files.size > 0 %}
+  <div class="resume-preview" aria-label="CV PDF preview">
+    <object class="resume-pdf" data="{{ page.resume_pdf | relative_url }}" type="application/pdf" title="Taoyu Lyu CV">
+      <p><a href="{{ page.resume_pdf | relative_url }}">Open PDF</a></p>
+    </object>
+  </div>
+  {% endif %}
+  {% comment %} HTML version: shown when there is no PDF, and on phones (where the PDF preview is hidden). {% endcomment %}
   <div class="resume-document" itemprop="text">{{ content }}</div>
 </main>
