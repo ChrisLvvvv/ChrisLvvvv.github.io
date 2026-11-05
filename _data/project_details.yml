@@ -1,0 +1,6 @@
+# Optional metadata keyed by the _portfolio filename without .md, or by a
+# placeholder key in work.yml. Existing front matter can supply these too.
+# github_url: an explicitly supplied GitHub repository URL (never a profile).
+# images: a list of existing image assets, each with src and optional alt.
+# Missing fields stay hidden; no URLs or image paths are inferred.
+{}

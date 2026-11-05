@@ -1,0 +1,24 @@
+# Work-only selection. This does not control the homepage's Selected Work.
+selected:
+  - upenn-ra
+  - huichuang-medical-equipment
+  - sram-4bit-mac-accelerator
+
+# All three selections now resolve to real portfolio documents.
+placeholders: []
+
+# CV-backed records use period/display_year and a month or term sort_key.
+# Term keys are ordering labels, never invented calendar dates.
+# work_title/work_excerpt override legacy homepage card text in Work/detail only.
+
+# An item's explicit work_category overrides these legacy group mappings.
+categories:
+  - key: experience
+    title: "Experience"
+    project_groups: [research]
+  - key: projects
+    title: "Projects"
+    project_groups: []
+  - key: coursework
+    title: "Coursework"
+    project_groups: [coursework-archive, systems-hardware]

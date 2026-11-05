@@ -166,6 +166,7 @@ include:
   - _pages
   - files
 exclude:
+  - Master_CV.pdf
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

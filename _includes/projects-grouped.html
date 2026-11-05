@@ -1,8 +1,8 @@
-<nav class="work-jump" aria-label="Work sections">
-  {% for group in site.data.project_groups %}
-  <a href="#{{ group.key }}"><span>0{{ forloop.index }}</span>{{ group.title }}</a>
-  {% endfor %}
-</nav>
-{% for group in site.data.project_groups %}
-  {% include project-group-section.html group=group number=forloop.index %}
+{% assign visible_group_number = 0 %}
+{% for group in site.data.work.categories %}
+  {% include work-category-items.html group=group %}
+  {% if work_items.size > 0 %}
+    {% assign visible_group_number = visible_group_number | plus: 1 %}
+    {% include project-group-section.html group=group projects=work_items number=visible_group_number %}
+  {% endif %}
 {% endfor %}

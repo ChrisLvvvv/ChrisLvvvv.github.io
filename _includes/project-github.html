@@ -1,0 +1,9 @@
+{%- assign repository_project = include.project -%}
+{%- assign repository_key = repository_project.slug | default: repository_project.key -%}
+{%- assign repository_metadata = site.data.project_details[repository_key] -%}
+{%- assign repository_url = repository_project.github_url | default: repository_metadata.github_url -%}
+{%- if repository_url and repository_url != '' -%}
+<a class="project-github" href="{{ repository_url | escape }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for {{ repository_project.title | escape }}">
+  <img src="{{ '/assets/icons/github.svg' | relative_url }}" width="20" height="20" alt="" aria-hidden="true">
+</a>
+{%- endif -%}

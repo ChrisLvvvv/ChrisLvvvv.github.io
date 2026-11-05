@@ -89,7 +89,7 @@
 </svg>
 {% else %}
 {% assign visual_group = include.project.project_group | default: 'coursework-archive' %}
-<svg class="project-graphic project-graphic--{{ visual_group }}" viewBox="0 0 800 540" role="img" aria-label="Abstract technical illustration for {{ include.project.title }}">
+<svg class="project-graphic project-graphic--{{ visual_group }}" viewBox="0 0 800 540" role="img" aria-label="Abstract technical illustration for {{ include.project.work_title | default: include.project.title }}">
   <rect width="800" height="540" class="graphic-bg"/>
   {% if visual_group == 'research' %}
     <g class="graphic-orbits" fill="none"><ellipse cx="410" cy="266" rx="280" ry="142"/><ellipse cx="410" cy="266" rx="204" ry="104"/><path d="M82 359c151-63 229-194 320-159 97 38 159 188 346 105"/></g><g class="graphic-blocks"><rect x="167" y="204" width="76" height="76"/><rect x="370" y="226" width="102" height="102"/><rect x="598" y="177" width="59" height="59"/></g><path class="graphic-signal" d="M0 443h117v-55h102v-79h128v45h97v-116h144v-62h212" fill="none"/>
@@ -98,6 +98,6 @@
   {% else %}
     <g class="graphic-waves" fill="none"><path d="M-20 418c90-176 182-176 274 0s184 176 276 0 184-176 276 0"/><path d="M-20 350c90-176 182-176 274 0s184 176 276 0 184-176 276 0"/><path d="M-20 282c90-176 182-176 274 0s184 176 276 0 184-176 276 0"/></g><circle class="graphic-core" cx="400" cy="270" r="91"/><path class="graphic-axis" d="M70 270h660M400 42v456"/>
   {% endif %}
-  <text x="38" y="56">TL / {{ include.index | default: '01' }}</text><text x="762" y="504" text-anchor="end">{{ include.project.date | date: '%Y' }}</text>
+  <text x="38" y="56">TL / {{ include.index | default: '01' }}</text><text x="762" y="504" text-anchor="end">{% if include.project.display_year %}{{ include.project.display_year }}{% else %}{{ include.project.date | date: '%Y' }}{% endif %}</text>
 </svg>
 {% endif %}

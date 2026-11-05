@@ -1,0 +1,29 @@
+{%- assign gallery_project = include.project -%}
+{%- assign gallery_key = gallery_project.slug | default: gallery_project.key -%}
+{%- assign gallery_metadata = site.data.project_details[gallery_key] -%}
+{%- assign gallery_images = gallery_project.images | default: gallery_metadata.images -%}
+{% if gallery_images.size > 1 %}
+<div class="project-gallery" data-project-gallery role="region" aria-label="Images for {{ gallery_project.title | escape }}">
+  {% for image in gallery_images %}
+  <figure class="project-gallery__slide" data-project-slide{% unless forloop.first %} hidden{% endunless %}>
+    {% if image.full_size %}<a class="project-image-link" href="{{ image.src | relative_url }}" target="_blank" rel="noopener" aria-label="Open full-size image: {{ image.alt | default: gallery_project.title | escape }}">{% endif %}
+    <img src="{{ image.src | relative_url }}" alt="{{ image.alt | default: gallery_project.title | escape }}" decoding="async">
+    {% if image.full_size %}</a>{% endif %}
+    {% if image.caption %}<figcaption>{{ image.caption }}</figcaption>{% endif %}
+  </figure>
+  {% endfor %}
+  <div class="project-gallery__controls">
+    <button class="project-gallery__button" type="button" data-project-previous aria-label="Previous project image" disabled><span aria-hidden="true">←</span></button>
+    <p aria-live="polite" aria-atomic="true" data-project-image-count>1 / {{ gallery_images.size }}</p>
+    <button class="project-gallery__button" type="button" data-project-next aria-label="Next project image"><span aria-hidden="true">→</span></button>
+  </div>
+</div>
+{% elsif gallery_images.size == 1 %}
+  {% assign image = gallery_images.first %}
+  {% if image.full_size %}<a class="project-image-link" href="{{ image.src | relative_url }}" target="_blank" rel="noopener" aria-label="Open full-size image: {{ image.alt | default: gallery_project.title | escape }}">{% endif %}
+  <img class="project-hero__image" src="{{ image.src | relative_url }}" alt="{{ image.alt | default: gallery_project.title | escape }}" decoding="async">
+  {% if image.full_size %}</a>{% endif %}
+  {% if image.caption %}<p class="project-image-caption">{{ image.caption }}</p>{% endif %}
+{% else %}
+  {% include project-visual.html project=gallery_project context="detail" %}
+{% endif %}

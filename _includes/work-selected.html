@@ -1,0 +1,44 @@
+<section class="work-selected work-group" aria-labelledby="selected-projects-title">
+  <header class="work-group__header">
+    <h2 id="selected-projects-title">Selected Projects</h2>
+  </header>
+  <div class="work-list">
+    {% for project_key in site.data.work.selected %}
+      {% assign selected_project = site.portfolio | where: 'slug', project_key | first %}
+      {% unless selected_project %}
+        {% assign selected_project = site.data.work.placeholders | where: 'key', project_key | first %}
+      {% endunless %}
+      {% if selected_project %}
+      <article class="work-row" data-selected-project="{{ project_key }}">
+        {% if selected_project.display_year or selected_project.date or selected_project.work_type %}
+        <div class="work-row__meta">
+          {% if selected_project.display_year %}<time datetime="{{ selected_project.start_month | default: selected_project.display_year }}">{{ selected_project.display_year }}</time>{% elsif selected_project.date %}<time datetime="{{ selected_project.date | date_to_xmlschema }}">{{ selected_project.date | date: '%Y' }}</time>{% endif %}
+          {% if selected_project.work_type %}<span>{{ selected_project.work_type }}</span>{% endif %}
+        </div>
+        {% endif %}
+        <div class="work-row__main">
+          <h3>{% if selected_project.url %}<a href="{{ selected_project.url | relative_url }}">{{ selected_project.work_title | default: selected_project.title }} <span class="work-row__arrow" aria-hidden="true">↗</span></a>{% else %}{{ selected_project.work_title | default: selected_project.title }}{% endif %}</h3>
+          {% if selected_project.work_excerpt or selected_project.excerpt %}<p>{% if selected_project.venue %}{{ selected_project.venue }}<br>{% endif %}{{ selected_project.work_excerpt | default: selected_project.excerpt }}</p>{% endif %}
+          {% include project-github.html project=selected_project %}
+        </div>
+        {% if selected_project.url %}
+        <a class="work-row__visual" href="{{ selected_project.url | relative_url }}" tabindex="-1" aria-hidden="true">
+          {% if selected_project.cover_image %}
+          <figure class="work-row__image">
+            <img src="{{ selected_project.cover_image | relative_url }}" alt="{{ selected_project.cover_alt | default: selected_project.title | escape }}" loading="lazy" decoding="async">
+            {% if selected_project.cover_caption %}<figcaption>{{ selected_project.cover_caption }}</figcaption>{% endif %}
+          </figure>
+          {% else %}
+          {% include project-visual.html project=selected_project context="detail" %}
+          {% endif %}
+        </a>
+        {% else %}
+        <div class="work-row__visual">
+          {% include project-visual.html project=selected_project context="detail" %}
+        </div>
+        {% endif %}
+      </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
