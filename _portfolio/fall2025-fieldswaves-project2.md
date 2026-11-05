@@ -1,79 +1,38 @@
 ---
-title: "Electromechanics Modeling and Magnetic Force Analysis"
+title: "Electromechanical System Design and Analysis"
 collection: portfolio
 permalink: /portfolio/fall2025-fieldswaves-project2/
 date: 2025-11-15
-venue: "ECSE 2110 Fields and Waves I – Project 2"
-excerpt: "Analytical and computational evaluation of magnetic circuits, flux distribution and electromagnetic force generation using energy and co-energy methods."
+excerpt: "DC motor iteration, an RL-plus-back-EMF model in LTspice, oscilloscope comparison, and a mechanically driven generator demonstration."
 project_group: coursework-archive
-tags:
-  - Electromagnetics
-  - Magnetic Circuits
-  - Electromechanics
-  - Energy Methods
-  - MATLAB
+display_year: "2025"
+period: "Fall 2025"
+sort_key: "2025-Fall"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+tags: ["Electromechanics","LTspice","Oscilloscope","Circuit Modeling"]
+term: "Fall 2025"
+work_source: {}
 ---
 
-This project analyzes electromagnetic energy conversion and magnetic force generation in an electromechanical system. The study integrates magnetic circuit modeling, nonlinear material behavior, and energy based force prediction to understand how magnetic fields perform mechanical work.
+## DC motor iteration
 
-## Objectives
-- Model magnetic circuits using reluctance and flux relationships.
-- Compute magnetic energy, co-energy and force using field-theory based derivations.
-- Analyze geometry dependent electromagnetic force in an actuator-like system.
-- Validate analytical results using MATLAB based numerical evaluation.
+I iterated on a DC motor prototype by reducing the coil winding from 20 to 10 turns, adjusting commutator timing, and reducing mechanical friction. Across these changes, rotational frequency increased from 10 to 60 Hz and circuit resistance was reduced to 0.25 Ω.
 
-## Technical Work
+| Prototype measure | Initial | Revised |
+| :--- | ---: | ---: |
+| Coil winding | 20 turns | 10 turns |
+| Rotational frequency | 10 Hz | 60 Hz |
 
-### Magnetic Circuit Modeling
-- Constructed a complete magnetic circuit including:
-  - Core regions
-  - Air gaps
-  - Nonlinear magnetic materials
-- Computed **reluctances \( \mathcal{R} \)**, magnetic flux \( \Phi \) and magnetomotive force (MMF).
-- Evaluated the equivalent magnetic circuit under varying gap lengths to understand force sensitivity.
+The revised circuit resistance was 0.25 Ω.
 
-### Energy and Co-Energy Analysis
-- Derived magnetic **stored energy** \( W_{field} \) and **co-energy** \( W' \):
+## Electrical model and measurements
 
-  \[
-  W' = \int_0^{i} \lambda \, di
-  \]
+I developed an equivalent RL circuit model with back-EMF in LTspice. I compared simulated transient behavior with oscilloscope voltage measurements to investigate how the electrical model relates to motor operation.
 
-  where \( \lambda = N\Phi \) is the flux linkage.
-  
-- Used the co-energy method to compute force:
+The model and measured voltage transients provided complementary views of the prototype. The mechanical changes, commutator timing, resistance, and back-EMF all mattered to interpreting its behavior.
 
-  \[
-  F = \frac{\partial W'}{\partial x}
-  \]
+## Generator operation
 
-  relating mechanical displacement \( x \) to energy variation.
-
-- Analyzed how force scales with:
-  - Coil current  
-  - Number of turns  
-  - Air-gap thickness  
-  - Material permeability  
-
-### Force Prediction vs. Geometry
-- Computed electromagnetic force for multiple air-gap distances.
-- Built a parametric sweep in MATLAB to evaluate:
-  - Flux density distribution
-  - Energy trends
-  - Force vs. displacement curve
-- Identified nonlinear behavior as gaps shrink due to increasing flux density and mmf concentration.
-
-### Numerical Simulation
-- Created MATLAB scripts for symbolic and numeric evaluation of:
-  - Magnetic flux and mmf  
-  - Inductance as a function of gap  
-  - Energy and co-energy  
-  - Force curves  
-
-- Verified consistency between:
-  - Magnetic circuit approximations
-  - Energy method predictions
-  - Trend expectations from electromechanics theory
-
-## Outcome
-This project provided a complete electromechanical characterization of a magnetic actuator system. By modeling the magnetic circuit, deriving energy based force equations, and validating results numerically, the project built strong intuition for how electromagnetic fields convert electrical input into mechanical output. It reinforced core concepts in magnetic circuits, field energy, and the foundations of electric machinery design.
+I also mechanically drove the motor to demonstrate generator operation. It produced a measured 17.9 mV electrical output without an external electrical supply.

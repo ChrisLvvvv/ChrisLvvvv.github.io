@@ -3,35 +3,38 @@ title: "GPU Kernel Performance Study for MoE Workloads"
 collection: portfolio
 permalink: /portfolio/gpu-kernel-performance-study/
 date: 2025-11-15
-venue: "Undergraduate Research Project – Fall 2025"
 excerpt: "Profiled and analyzed GPU kernel behavior for Mixture-of-Experts LLM workloads, focusing on PagedAttention performance, memory fragmentation, and scheduling inefficiencies."
-project_group: research
 featured_on_home: true
-tags:
-  - GPU Systems
-  - LLM Inference
-  - CUDA Profiling
-  - vLLM
-  - MoE
-  - PagedAttention
+project_group: research
+work_title: "GPU Memory Management for High-Throughput LLM Serving"
+work_excerpt: "Profiling fragmentation, block-based KV-cache allocation, and request scheduling in vLLM-style autoregressive serving."
+display_year: "2025"
+period: "Aug. 2025 – Jan. 2026"
+start_month: "2025-08"
+end_month: "2026-01"
+sort_key: "2025-08"
+date_precision: "month"
+work_type: "Undergraduate Research Program"
+work_category: "experience"
+venue: "Rensselaer Polytechnic Institute · Undergraduate Research Program"
+tags: ["GPU Memory","LLM Serving","PagedAttention","PyTorch"]
+work_source:
+  organization: "RPI"
+  detail: "URP"
 ---
 
-This project investigates GPU kernel performance bottlenecks in Mixture-of-Experts (MoE) large language model inference. The study focuses on PagedAttention, memory fragmentation in dynamic KV-cache allocation, and kernel-level scheduling behavior on modern NVIDIA GPUs. Using vLLM and custom profiling utilities, I examined how expert routing patterns and varying sequence lengths impact throughput and GPU utilization.
+## Research setting
 
-## My Contribution
+I carried out this undergraduate research at Rensselaer Polytechnic Institute in Troy, New York, from August 2025 to January 2026, advised by Prof. Liu Liu. I investigated GPU memory management for high-throughput LLM serving, focusing on fragmentation, allocation, and scheduling under variable-length requests.
 
-- Built profiling workflows to analyze PagedAttention kernels under diverse batch sizes and MoE routing distributions  
-- Measured memory fragmentation and cache behavior using custom scripts and NVIDIA profiling tools  
-- Identified inefficiencies in expert activation imbalance and kernel launch patterns  
-- Generated reproducible benchmarks and visualizations for throughput, latency, and SM occupancy  
-- Documented key insights to guide later optimization work in memory scheduling and cache-aware design  
+## From contiguous reservations to KV blocks
 
-## Technical Summary
+I studied how PagedAttention maps logical KV-cache blocks to noncontiguous physical GPU memory in vLLM-style serving. The central question was how allocation granularity changes usable memory during large-batch autoregressive inference, when prompts and generated outputs require different amounts of cache space.
 
-- **Concepts:** MoE routing, GPU memory hierarchy, PagedAttention, kernel scheduling  
-- **Methods:** CUDA profiling, KV-cache inspection, GPU timeline analysis  
-- **Tools:** vLLM, NVIDIA Nsight Systems, Nsight Compute, custom Python profiling scripts  
+I developed PyTorch-based profiling scripts to vary sequence length, request concurrency, and KV block size across synthetic serving workloads. The workload ranges targeted 128–2048-token contexts and 1–64 concurrent requests.
 
-## Outcome
+## Allocation and scheduling
 
-Produced a detailed analysis of bottlenecks in MoE inference workloads, highlighting opportunities for improved cache locality, reduced fragmentation, and more efficient kernel launches. The results serve as foundational work for ongoing URP research on KV-cache compression and memory-aware scheduling.
+I benchmarked contiguous over-provisioning against block-based KV-cache allocation. The comparisons examined internal fragmentation, reserved-token waste, and effective GPU memory utilization under variable-length prompts and outputs.
+
+I also analyzed the request-scheduling path through waiting, running, and swapped queues. This connected allocation behavior to CPU/GPU block placement, preemption, and block reuse, and to their effects on throughput when GPU memory is under pressure.

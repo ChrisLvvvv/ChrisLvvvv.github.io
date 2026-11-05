@@ -3,52 +3,29 @@ title: "Project A1: CPU Scheduling and Hardware Features"
 collection: portfolio
 permalink: /portfolio/fall2025-ecse4320-tracka1/
 date: 2025-10-10
-venue: "ECSE4320 Advanced Computer Systems"
-excerpt: "Experimental study of CPU affinity, scheduler oversubscription, NUMA locality and SMT interference using microbenchmarks and Linux tooling."
+excerpt: "Linux microbenchmarks investigating CPU affinity, NUMA locality, simultaneous multithreading, and thread placement."
 project_group: coursework-archive
-tags:
-  - ECSE4320
-  - Computer Systems
-  - CPU Architecture
-  - Operating Systems
-  - NUMA
-  - SMT
-  - Performance
+display_year: "2025"
+period: "Fall 2025"
+sort_key: "2025-Fall"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+venue: "Rensselaer Polytechnic Institute · ECSE 4320 Advanced Computer Systems"
+tags: ["CPU Affinity","NUMA","SMT","Linux Profiling"]
+term: "Fall 2025"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 4320"
+  course_name: "Advanced Computer Systems"
 ---
 
-[← Back to ECSE4320 Advanced Computer Systems Overview](/portfolio/fall2025-ecse4320/)
+[← Advanced Computer Systems overview](/portfolio/fall2025-ecse4320/)
 
-This project explored how operating system scheduling policies and hardware features influence application performance.
+## Placement and memory locality
 
+I designed Linux microbenchmarks to investigate CPU affinity, NUMA placement, and simultaneous multithreading. I compared local and cross-socket memory access and evaluated how thread placement interacts with the memory hierarchy.
 
-## Experiments
+## Measurement focus
 
-- **Feature 1 – CPU Affinity**  
-  - Benchmarked a parallel workload with and without explicit thread pinning.  
-  - Measured both mean runtime and variance across repeated runs.  
-  - Found that affinity primarily improved stability by reducing jitter, while average throughput remained similar when the scheduler made good default placements.
-
-- **Feature 2 – Scheduler Behavior Under Oversubscription**  
-  - Varied the number of worker threads from below to well above the logical core count.  
-  - Examined how the Linux Completely Fair Scheduler handled oversubscription.  
-  - Observed the transition from near linear scaling to saturation and degradation as context switching overhead and run queue contention increased.
-
-- **Feature 3 – NUMA Locality**  
-  - Investigated Non Uniform Memory Access behavior using memory bound workloads and different NUMA settings.  
-  - Used tools such as `numactl` and bandwidth measurements to compare local versus remote access policies.  
-  - Highlighted the importance of understanding the underlying topology, especially in virtualized or single socket systems where apparent NUMA domains may be abstracted.
-
-- **Feature 4 – SMT Interference**  
-  - Measured performance of compute bound and memory bound kernels with and without a competing thread pinned to the sibling logical CPU on the same core.  
-  - Quantified how shared core resources and cache hierarchy produce interference under SMT.  
-  - Showed that compute heavy workloads suffer more under interference than memory bound workloads which are already limited by bandwidth.
-
-## Methodology
-
-- Implemented microbenchmarks in C and C++ with POSIX threads.  
-- Used Linux tools such as `taskset`, `numactl` and `perf` to control and observe scheduling behavior.  
-- Ran multiple trials per configuration to capture run to run variability and reported both median and spread.
-
-## Outcome
-
-This project provided hands on insight into the interaction between OS scheduling, CPU topology and workload characteristics. It built intuition for when manual control such as affinity and NUMA policies can help, and when they simply mirror the scheduler’s default decisions.
+The experiments connected software placement decisions to hardware topology. I used C/C++ with Pthreads, Linux perf, and libnuma to examine scheduling and memory behavior.

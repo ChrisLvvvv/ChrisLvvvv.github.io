@@ -1,39 +1,23 @@
 {% assign group = include.group %}
-{% assign projects = site.portfolio | where: "project_group", group.key | sort: "date" | reverse %}
+{% assign projects = include.projects %}
 {% if projects.size > 0 %}
-<section class="work-group work-group--{{ group.key }}" id="{{ group.key }}" aria-labelledby="{{ group.key }}-title">
+<section class="work-group work-archive-group work-group--{{ group.key }}" id="{{ group.key }}" aria-labelledby="{{ group.key }}-title">
   <header class="work-group__header">
     <span>0{{ include.number }}</span>
     <h2 id="{{ group.key }}-title">{{ group.title }}</h2>
   </header>
-  {% if group.key == 'coursework-archive' %}
   <ul class="coursework-list">
     {% for project in projects %}
-    <li>
-      <a class="coursework-row" href="{{ project.url | relative_url }}">
-        <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: '%Y' }}</time>
-        <h3>{{ project.title }}</h3>
-        {% if project.tags.first %}<span class="coursework-row__category">{{ project.tags.first }}</span>{% endif %}
-        <span class="coursework-row__arrow" aria-hidden="true">↗</span>
-      </a>
+    <li class="coursework-row work-archive-row">
+      <span class="work-archive-row__date">{% include work-date.html project=project %}</span>
+      <div class="work-archive-row__heading">
+        <h3>{% if project.url %}<a href="{{ project.url | relative_url }}">{{ project.work_title | default: project.title }}</a>{% else %}{{ project.work_title | default: project.title }}{% endif %}</h3>
+        {% include project-github.html project=project %}
+      </div>
+      <span class="coursework-row__category">{% include work-source.html project=project %}</span>
+      {% if project.url %}<span class="coursework-row__arrow" aria-hidden="true">↗</span>{% endif %}
     </li>
     {% endfor %}
   </ul>
-  {% else %}
-  <div class="work-list">
-    {% for project in projects %}
-    <article class="work-row">
-      <div class="work-row__main">
-        <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: '%Y.%m' }}</time>
-        <h3><a href="{{ project.url | relative_url }}">{{ project.title }} <span class="work-row__arrow" aria-hidden="true">↗</span></a></h3>
-        {% if project.excerpt %}<p>{{ project.excerpt }}</p>{% endif %}
-      </div>
-      <a class="work-row__visual" href="{{ project.url | relative_url }}" tabindex="-1" aria-hidden="true">
-        {% include project-visual.html project=project context="work" %}
-      </a>
-    </article>
-    {% endfor %}
-  </div>
-  {% endif %}
 </section>
 {% endif %}

@@ -1,0 +1,14 @@
+{%- include work-period.html project=include.project -%}
+<span class="work-date"{% if work_period_term != '' %} title="{{ work_period_term | escape }} semester display range" data-term="{{ work_period_term | escape }}"{% endif %}>
+  {%- if work_period_start != '' -%}
+    <time datetime="{{ work_period_start }}">{{ work_period_start | replace: '-', '.' }}</time>
+    {%- if work_period_end != '' -%}
+      {{- ' - ' -}}
+      {%- assign work_end_normalized = work_period_end | downcase -%}
+      {%- if work_end_normalized == 'present' -%}Present
+      {%- else -%}<time datetime="{{ work_period_end }}">{{ work_period_end | replace: '-', '.' }}</time>
+      {%- endif -%}
+    {%- endif -%}
+  {%- elsif work_period_year != '' -%}<time datetime="{{ work_period_year }}">{{ work_period_year }}</time>
+  {%- endif -%}
+</span>

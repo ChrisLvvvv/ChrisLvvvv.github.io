@@ -3,7 +3,7 @@ title: "Wave Propagation and Transmission Line Analysis"
 collection: portfolio
 permalink: /portfolio/fall2025-fieldswaves-project1/
 date: 2025-10-20
-venue: "ECSE 2110 Fields and Waves I – Project 1"
+venue: "Rensselaer Polytechnic Institute · ECSE 2100 Fields and Waves I"
 excerpt: "Analytical and MATLAB based study of wave propagation, impedance transformation, reflection behavior and power flow along transmission lines at high frequencies."
 project_group: coursework-archive
 tags:
@@ -12,6 +12,15 @@ tags:
   - Smith Chart
   - MATLAB
   - RF Engineering
+display_year: "2025"
+period: "Fall 2025"
+date_precision: "term"
+work_type: "Coursework"
+term: "Fall 2025"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 2100"
+  course_name: "Fields and Waves I"
 ---
 
 This project analyzes electromagnetic wave propagation on transmission lines through a combination of analytical derivations and MATLAB-based computation. It focuses on characterizing reflection behavior, impedance transformation, and power delivery at gigahertz frequencies using the transmission line (TL) equations and Smith Chart techniques.
@@ -32,16 +41,24 @@ This project analyzes electromagnetic wave propagation on transmission lines thr
 ### Reflection and Impedance Analysis
 - Derived the **load reflection coefficient**:
 
+  <div class="project-formula" markdown="1" role="region" aria-label="Load reflection coefficient formula" tabindex="0">
+
   \[
   \Gamma_L = \frac{Z_L - Z_0}{Z_L + Z_0}
   \]
 
+  </div>
+
 - Evaluated **SWR**, **return loss**, and **mismatch loss**.
 - Computed **input impedance \( Z_{in}(d) \)** at various distances using:
+
+  <div class="project-formula" markdown="1" role="region" aria-label="Input impedance formula" tabindex="0">
 
   \[
   Z_{in}(d)=Z_0\frac{Z_L+Z_0\tanh(\gamma d)}{Z_0+Z_L\tanh(\gamma d)}
   \]
+
+  </div>
 
 - Compared hand-computed values with MATLAB simulations to validate correctness.
 

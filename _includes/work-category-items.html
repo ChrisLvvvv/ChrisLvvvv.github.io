@@ -1,0 +1,61 @@
+{%- assign work_items = '' | split: '' -%}
+{%- for candidate in site.portfolio -%}
+  {%- if candidate.work_category -%}
+    {%- if candidate.work_category == include.group.key -%}
+      {%- assign work_items = work_items | push: candidate -%}
+    {%- endif -%}
+  {%- elsif include.group.project_groups contains candidate.project_group -%}
+    {%- assign work_items = work_items | push: candidate -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign category_placeholders = site.data.work.placeholders | where: 'work_category', include.group.key -%}
+{%- for candidate in category_placeholders -%}
+  {%- assign existing_project = site.portfolio | where: 'slug', candidate.key | first -%}
+  {%- unless existing_project -%}
+    {%- assign work_items = work_items | push: candidate -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- comment -%}
+First retain the existing archive order, then stably sort by the unified display
+period. Equal semester keys keep their previous relative order. The first pass
+uses legacy ordering metadata only, never as a displayed project date.
+{%- endcomment -%}
+{%- for work_sort_pass in (1..2) -%}
+{%- assign sorted_work_items = '' | split: '' -%}
+{%- for candidate in work_items -%}
+  {%- if work_sort_pass == 2 -%}
+    {%- include work-period.html project=candidate -%}
+    {%- assign insertion_key = work_period_sort_key -%}
+  {%- elsif candidate.sort_key -%}
+    {%- assign insertion_key = candidate.sort_key | replace: 'Spring', '01' | replace: 'Summer', '06' | replace: 'Fall', '09' | replace: 'Winter', '12' -%}
+  {%- elsif candidate.date -%}
+    {%- assign insertion_key = candidate.date | date: '%Y-%m' -%}
+  {%- else -%}
+    {%- assign insertion_key = '' -%}
+  {%- endif -%}
+  {%- assign next_work_items = '' | split: '' -%}
+  {%- assign inserted = false -%}
+  {%- for placed in sorted_work_items -%}
+    {%- if work_sort_pass == 2 -%}
+      {%- include work-period.html project=placed -%}
+      {%- assign placed_key = work_period_sort_key -%}
+    {%- elsif placed.sort_key -%}
+      {%- assign placed_key = placed.sort_key | replace: 'Spring', '01' | replace: 'Summer', '06' | replace: 'Fall', '09' | replace: 'Winter', '12' -%}
+    {%- elsif placed.date -%}
+      {%- assign placed_key = placed.date | date: '%Y-%m' -%}
+    {%- else -%}
+      {%- assign placed_key = '' -%}
+    {%- endif -%}
+    {%- if inserted == false and insertion_key > placed_key -%}
+      {%- assign next_work_items = next_work_items | push: candidate -%}
+      {%- assign inserted = true -%}
+    {%- endif -%}
+    {%- assign next_work_items = next_work_items | push: placed -%}
+  {%- endfor -%}
+  {%- unless inserted -%}
+    {%- assign next_work_items = next_work_items | push: candidate -%}
+  {%- endunless -%}
+  {%- assign sorted_work_items = next_work_items -%}
+{%- endfor -%}
+{%- assign work_items = sorted_work_items -%}
+{%- endfor -%}

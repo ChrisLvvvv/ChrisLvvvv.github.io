@@ -3,7 +3,7 @@ title: "Inventor’s Studio I: Engineering Design Innovation"
 collection: portfolio
 permalink: /portfolio/inventors-studio-1/
 date: 2025-12-01
-venue: "ENGR 2220 – Fall 2025"
+venue: "Rensselaer Polytechnic Institute · MANE 2220 Inventor’s Studio 1"
 excerpt: "Developed and delivered an engineering innovation project through iterative prototyping, user analysis, and structured design methodology."
 project_group: systems-hardware
 tags:
@@ -12,6 +12,15 @@ tags:
   - User Research
   - Teamwork
   - Innovation
+display_year: "2025"
+period: "Fall 2025"
+date_precision: "term"
+work_type: "Coursework"
+term: "Fall 2025"
+work_source:
+  organization: "RPI"
+  course_code: "MANE 2220"
+  course_name: "Inventor’s Studio 1"
 ---
 
 In this course, our team followed the complete engineering design cycle to identify a user-centered problem, generate feasible concepts, build early prototypes, and validate the solution through testing and feedback. The project emphasized structured creativity, engineering communication, and iterative refinement based on user needs and performance data.

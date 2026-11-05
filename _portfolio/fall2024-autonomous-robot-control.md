@@ -3,50 +3,37 @@ title: "Autonomous Robotic Control System"
 collection: portfolio
 permalink: /portfolio/fall2024-autonomous-robot-control/
 date: 2024-12-07
-venue: "ENGR 2350 Embedded Control – Fall 2024"
 excerpt: "Autonomous ARM Cortex-M robotic control system featuring cascaded PI/PD control, sensor fusion and hierarchical FSM navigation."
-project_group: systems-hardware
 featured_on_home: true
-tags:
-  - Embedded Systems
-  - Robotics
-  - MSP432
-  - Sensor Fusion
-  - PWM
-  - PID Control
-  - I2C
-  - C Programming
+project_group: systems-hardware
+work_excerpt: "Embedded control combining PI wheel-speed regulation, PD heading control, bare-metal sensor drivers, and a navigation FSM for the Hit-the-Targets challenge."
+display_year: "2024"
+period: "Fall 2024"
+sort_key: "2024-Fall"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+venue: "Rensselaer Polytechnic Institute · ENGR 2350 Embedded Control"
+tags: ["Embedded C","PI/PD Control","ARM Cortex-M","I2C"]
+term: "Fall 2024"
+work_source:
+  organization: "RPI"
+  course_code: "ENGR 2350"
+  course_name: "Embedded Control"
 ---
 
-This project implements a full autonomous navigation system on the ARM Cortex-M-based MSP432, integrating wheel-speed control, heading stabilization, sensor fusion and behavior-level decision making. The robot operates independently inside a bounded arena and uses multiple sensing modalities to detect collisions, maintain orientation and steer toward targets.
+## Closed-loop motion control
 
-## My Contribution
+For ENGR 2350 in Fall 2024, I implemented an autonomous robotic control system using Embedded C on an ARM Cortex-M platform. PI wheel-speed regulation and PD heading control combined encoder feedback with differential steering to adjust motion under friction and battery variation.
 
-- Designed and implemented the cascading closed-loop controller architecture:
-  - **PI control** regulating wheel speed using quadrature encoder feedback to compensate for load variation, friction and battery voltage sag.
-  - **PD control** for heading stabilization using inertial/compass sensor data, enabling smooth differential steering and reduced steady-state tracking error.
-- Developed bare-metal embedded drivers including:
-  - **PWM generation** for motor actuation  
-  - **ADC sampling** for analog measurements  
-  - **Timer input-capture** for quadrature encoder decoding  
-  - **I²C communication** with the CMPS12 IMU/compass  
-  - **Ultrasonic sensor integration** for collision and obstacle response
-- Constructed a hierarchical **Finite State Machine** (FSM) that orchestrates behaviors such as:
-  - Search / forward exploration  
-  - Collision detection and recovery  
-  - Controlled U-turn and re-entry into the field  
-- Implemented non-blocking timing and internal state scheduling using timer interrupts to maintain real-time responsiveness and prevent motion freeze during sensing events.
-- Conducted real-time telemetry logging through UART for debugging controller stability, wheel speed profiles and heading corrections.
+## Drivers and sensing
 
-## Technical Summary
+I developed bare-metal drivers for PWM motor control, ADC sampling, and quadrature-encoder input capture. I integrated a CMPS12 compass/IMU over I2C and ultrasonic sensors for gesture-based control and obstacle detection.
 
-- **Microcontroller:** TI MSP432 (ARM Cortex-M4F)  
-- **Sensors:** CMPS12 IMU/compass (I²C), ultrasonic distance sensor, wheel encoders  
-- **Control Algorithms:** Cascaded PI/PD, differential drive, encoder-based tachometer  
-- **Software:** Bare-metal C, modular drivers, FSM-based architecture  
-- **Actuation:** Dual H-bridge motor control using PWM and direction lines  
-- **Toolchain:** Code Composer Studio (CCS), logic analyzer, serial telemetry  
+These interfaces connected the control loops to measured motion and the robot's surroundings. Encoder feedback supported wheel-speed regulation, while compass/IMU information supported heading control.
 
-## Outcome
+## Navigation and onboard checks
 
-The system achieved reliable autonomous behavior within the competition environment using robust closed-loop speed control, sensor fusion and structured state-machine logic. This project demonstrates strong proficiency in embedded C, ARM-level driver development, real-time control and robotics-oriented system integration.
+I designed the navigation finite-state machine for the “Hit-the-Targets” challenge. It coordinated search, collision-recovery, and U-turn behaviors using nonblocking timer interrupts.
+
+I tested the behaviors onboard, checking the interaction between sensing, motor control, and navigation state transitions.

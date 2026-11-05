@@ -3,42 +3,40 @@ title: "KV Cache Compression and Bit-Plane Eviction Scheduling"
 collection: portfolio
 permalink: /portfolio/fall2024-kv-cache-compression/
 date: 2024-12-01
-venue: "Undergraduate Research – Fall 2024"
 excerpt: "Designed KV-cache compression and eviction strategies using bit-plane slicing, semantic clustering, and recency-aware prioritization for large-context LLM inference."
-project_group: research
 featured_on_home: true
-tags:
-  - LLM Inference
-  - KV Cache
-  - Compression
-  - GPU Systems
-  - Research
+project_group: research
+work_title: "KV-Cache Efficiency with Semantic-Temporal Retention"
+work_excerpt: "A memory-budgeted semantic-temporal KV-retention policy, evaluated against recency-based retention and bit-plane precision-reduction baselines."
+display_year: "2024"
+period: "Aug. 2024 – Dec. 2024"
+start_month: "2024-08"
+end_month: "2024-12"
+sort_key: "2024-08"
+date_precision: "month"
+work_type: "Undergraduate Research Program"
+work_category: "experience"
+venue: "Rensselaer Polytechnic Institute · Undergraduate Research Program"
+tags: ["KV Cache","Semantic Clustering","Temporal Retention","Memory Efficiency"]
+work_source:
+  organization: "RPI"
+  detail: "URP"
 ---
 
-This undergraduate research project investigates memory-efficient KV cache management for large-context transformer inference. KV cache growth is a dominant bottleneck for GPU memory capacity and throughput. This work develops and evaluates structured compression and eviction strategies to extend usable context lengths under fixed memory budgets.
+## Research setting
 
-## My Contribution
+I worked on KV-cache efficiency through Rensselaer Polytechnic Institute's Undergraduate Research Program in Troy, New York, from August to December 2024. Prof. Tong Zhang advised the project, with Dr. Rui Xie as my mentor.
 
-- Designed a **recency + semantic aware prioritization scheme** for token-level KV retention, combining temporal decay with cluster-level semantic importance.  
-- Built a **lightweight lookup index** enabling fast token-to-cluster mapping during inference without noticeable latency overhead.  
-- Implemented **bit-plane slicing** for K/V tensors and evaluated reconstruction error under constrained bit budgets to quantify quality-compression tradeoffs.  
-- Analyzed compressibility patterns across **layers, heads, and context positions** using Llama 3.1 8B Instruct, mapping compression ratios to KV footprint and perplexity drift.  
-- Developed profiling tools and scripts in PyTorch to extract per-layer, per-head KV tensors during autoregressive decoding for targeted analysis.  
+## Understanding the memory budget
 
-## Technical Summary
+I profiled KV-cache growth during LLaMA 3.1 8B inference. The FP16 cache footprint was approximately 128 KB per token, reaching about 1 GB for an 8K-token context. This motivated examining which context information to retain when cache capacity is constrained.
 
-- **Model:** Llama 3.1 8B Instruct  
-- **Languages:** Python, PyTorch  
-- **Tools:** HuggingFace Transformers, custom KV-cache dump hooks, GPU profiling  
-- **Concepts:** bit-plane compression, semantic clustering, recency heuristics, memory-bounded inference  
+## Semantic-temporal retention
 
-## Additional Details
+I designed a memory-budgeted retention policy that combines semantic clustering with temporal recency. Rather than prioritizing tokens only by age, the policy considers their semantic grouping alongside how recently they were used.
 
-- Implemented hooks to log K/V tensors during decoding, enabling fine-grained analysis of redundancy and sensitivity.  
-- Created a hybrid eviction scoring function that balances temporal relevance with semantic token importance for improved retention quality.  
-- Identified structural redundancy in **early-layer K-planes** and semantic stability in **deeper-layer V-planes**, suggesting opportunities for layer-aware compression schedules.  
-- Built an evaluation pipeline to measure compression ratio, KV footprint reduction, and perplexity drift without needing full retraining.  
+I prototyped token-to-cluster mapping and lookup mechanisms to support assignment and retrieval of retained entries during autoregressive decoding.
 
-## Outcome
+## Comparing retention and precision
 
-Developed functional prototypes demonstrating that structured bit-plane compression and informed eviction policies can significantly reduce KV memory usage while maintaining long-context model quality. This work laid the groundwork for later visualization and profiling tools, including the KV Cache Inspector.
+I evaluated memory-quality trade-offs by comparing the semantic-temporal policy with recency-based retention and bit-plane precision-reduction baselines. The semantic-temporal policy and lookup prototype were my design work; recency retention and bit-plane reduction served as comparison methods.

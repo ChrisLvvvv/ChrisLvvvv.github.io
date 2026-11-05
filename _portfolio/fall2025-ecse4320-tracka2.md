@@ -3,47 +3,31 @@ title: "Project A2: Dense and Sparse Matrix Multiplication with Roofline Analysi
 collection: portfolio
 permalink: /portfolio/fall2025-ecse4320-tracka2/
 date: 2025-10-25
-venue: "ECSE4320 Advanced Computer Systems"
-excerpt: "SIMD and multithreaded optimization of dense and sparse matrix multiplication kernels, evaluated with a Roofline performance model."
+excerpt: "Dense and CSR sparse matrix kernels using OpenMP and compiler autovectorization, examined with Roofline analysis across matrix densities."
 project_group: coursework-archive
-tags:
-  - SIMD
-  - Linear Algebra
-  - Sparse Matrices
-  - Multithreading
-  - Roofline
+display_year: "2025"
+period: "Fall 2025"
+sort_key: "2025-Fall"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+venue: "Rensselaer Polytechnic Institute · ECSE 4320 Advanced Computer Systems"
+tags: ["OpenMP","CSR Matrices","Autovectorization","Roofline"]
+term: "Fall 2025"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 4320"
+  course_name: "Advanced Computer Systems"
 ---
 
-[← Back to ECSE4320 Advanced Computer Systems Overview](/portfolio/fall2025-ecse4320/)
+[← Advanced Computer Systems overview](/portfolio/fall2025-ecse4320/)
 
-This project studied performance differences between dense and sparse linear algebra kernels and related measured throughput to theoretical machine limits using a Roofline model. I implemented and optimized dense GEMM and sparse matrix multiplication kernels, then analyzed how arithmetic intensity and memory behavior constrained attainable performance.
+## Dense and sparse implementations
 
-## Implementations
+I implemented dense and CSR-based sparse matrix-multiplication kernels. OpenMP supplied parallel execution, while compiler autovectorization exposed data parallelism where the access structure allowed it.
 
-- **Dense GEMM**  
-  - Implemented a baseline dense matrix multiply kernel `C = A × B`.  
-  - Added cache aware blocking and loop reordering to improve locality.  
-  - Introduced SIMD vectorization and multithreading to exploit available cores.  
-  - Compared against a reference BLAS implementation for correctness and sanity checking of performance.
+Dense and sparse representations organize computation differently. The sparse implementation uses CSR structure, making matrix density and access patterns important parts of the comparison.
 
-- **CSR Sparse Matrix Multiplication (SpMM)**  
-  - Implemented a sparse matrix multiplication kernel using CSR format for `A` and dense `B` and `C`.  
-  - Designed loops to respect the irregular sparsity pattern while still allowing limited SIMD usage.  
-  - Quantified how structure dependent memory access patterns bound performance even with parallelism.
+## Roofline interpretation
 
-## Roofline Analysis
-
-- Measured achieved FLOP/s and memory bandwidth for each kernel and configuration.  
-- Computed arithmetic intensity and plotted each variant onto a Roofline model.  
-- Classified kernels as compute bound or memory bound based on their position relative to the machine’s peak compute and bandwidth ceilings.  
-- Showed that optimized dense GEMM could approach the compute roof, while SpMM often remained constrained by memory traffic and irregular access.
-
-## Tools and Environment
-
-- Language and tools: C, OpenMP or pthreads, SIMD intrinsics where appropriate.  
-- Profiling and plotting: Python with pandas and matplotlib.  
-- Experiments used controlled matrix sizes, fixed random seeds and repeated trials, reporting best of or median runtimes depending on analysis context.
-
-## Outcome
-
-The project demonstrated how algorithmic structure, data layout and low level optimizations interact to determine performance in practice. It reinforced Roofline modeling as a useful framework for reasoning about optimization priorities across dense and sparse workloads.
+I applied Roofline analysis to examine compute and memory constraints and compare behavior across matrix densities. This provided a way to relate arithmetic work to data movement, rather than treating elapsed time alone as an explanation of performance.

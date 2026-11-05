@@ -3,7 +3,7 @@ title: "Introduction to Electronics – Lab Skills Summary"
 collection: portfolio
 permalink: /portfolio/intro-electronics-foundation/
 date: 2023-05-01
-venue: "ECSE 2050 – Spring 2023"
+venue: "Rensselaer Polytechnic Institute · ECSE 2050 Introduction to Electronics"
 excerpt: "Summary of foundational electronics lab skills including diodes, transistors, op-amps, filters, rectifiers and measurement instrumentation."
 project_group: systems-hardware
 tags:
@@ -13,6 +13,15 @@ tags:
   - Op-Amps
   - Filters
   - Hardware Skills
+display_year: "2024"
+period: "Fall 2024"
+date_precision: "term"
+work_type: "Coursework"
+term: "Fall 2024"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 2050"
+  course_name: "Introduction to Electronics"
 ---
 
 This page summarizes the core experimental skills and circuit techniques developed through the hands-on laboratories in ECSE 2050 Introduction to Electronics. These exercises provided a practical foundation in analog behavior, components, circuit analysis and electrical measurement.

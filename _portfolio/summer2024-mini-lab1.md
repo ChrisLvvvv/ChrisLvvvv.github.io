@@ -1,22 +1,29 @@
 ---
-title: "Introductory Digital Circuit (Mini Project)"
+title: "Digital Logic Exercises"
 collection: portfolio
 permalink: /portfolio/summer2024-lab1-mini/
 date: 2024-06-05
-venue: "COMP Architecture & Networks – Summer 2024"
-excerpt: "Designed a basic digital circuit using CircuitSim as the first hands-on exercise in the course."
+excerpt: "Combinational and sequential circuit design and simulation in LogicWorks, checking logic functions, state behavior, and datapath components."
 project_group: coursework-archive
-tags:
-  - Digital Logic
-  - CircuitSim
-  - Mini Project
+display_year: "2024"
+period: "Summer 2024"
+sort_key: "2024-Summer"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+venue: "Rensselaer Polytechnic Institute · ECSE 2660 Computer Architecture & Networks"
+tags: ["Digital Logic","LogicWorks","Sequential Circuits"]
+term: "Summer 2024"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 2660"
+  course_name: "Computer Architecture & Networks"
 ---
 
-A small introductory circuit exercise built using CircuitSim. This lab served as an early refresher on combinational logic design and circuit-level reasoning.
+[← Computer Architecture and OS Fundamentals](/portfolio/computer-architecture-os-fundamentals/)
 
-## Summary
-- Constructed the required logic circuit using CircuitSim  
-- Verified functionality with provided test conditions  
-- Reinforced foundational digital logic concepts  
+## Logic design and simulation
 
-This project is categorized as a mini project due to its limited scope.
+I designed and simulated combinational and sequential circuits in LogicWorks. The exercises covered logic functions, state behavior, and datapath components.
+
+I checked circuit behavior in simulation, connecting Boolean logic and state transitions to the operation of the constructed circuits.

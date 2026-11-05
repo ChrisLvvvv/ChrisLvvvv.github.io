@@ -3,7 +3,7 @@ title: "Introduction to ECSE – Foundational Skills Summary"
 collection: portfolio
 permalink: /portfolio/fall2025-intro-ecse/
 date: 2025-12-05
-venue: "Fall 2025 – ECSE Introduction Series"
+venue: "Rensselaer Polytechnic Institute · ECSE 1010 Introduction to ECSE"
 excerpt: "Cross-disciplinary foundation in embedded systems, controls, digital logic, signal processing and machine learning through a broad set of hands-on labs."
 project_group: coursework-archive
 tags:
@@ -14,6 +14,15 @@ tags:
   - Machine Learning
   - Simulink
   - Sensors
+display_year: "2025"
+period: "Fall 2025"
+date_precision: "term"
+work_type: "Coursework"
+term: "Fall 2025"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 1010"
+  course_name: "Introduction to ECSE"
 ---
 
 This course provides a broad introduction to Electrical, Computer and Systems Engineering through hands-on laboratories spanning sensing, embedded control, digital logic, signal processing and machine learning. The labs build practical intuition for core ECSE disciplines and emphasize system-level thinking.

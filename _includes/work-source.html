@@ -1,0 +1,12 @@
+{%- assign work_source = include.project.work_source -%}
+{%- if work_source.organization -%}
+<span class="work-source__organization">{{ work_source.organization | escape }}</span>
+{%- endif -%}
+{%- if work_source.course_code or work_source.course_name or work_source.detail -%}
+<span class="work-source__detail">
+  {%- if work_source.course_code -%}{{ work_source.course_code | escape }}{%- endif -%}
+  {%- if work_source.course_code and work_source.course_name -%}{{ ' · ' }}{%- endif -%}
+  {%- if work_source.course_name -%}{{ work_source.course_name | escape }}
+  {%- elsif work_source.detail -%}{{ work_source.detail | escape }}{%- endif -%}
+</span>
+{%- endif -%}

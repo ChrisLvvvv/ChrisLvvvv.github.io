@@ -1,45 +1,35 @@
 ---
-title: "Computer Hardware Design – Lab Skills Summary"
+title: "RISC-V Processor Microarchitecture Design"
 collection: portfolio
 permalink: /portfolio/fall2024-hardware-design/
 date: 2024-12-03
-venue: "ECSE 4770 – Fall 2024"
-excerpt: "Summary of hardware design and RISC-V CPU construction skills from ECSE 4770, including SystemVerilog, FSMs, datapath design and multi-cycle/pipelined processors."
+excerpt: "Five-stage and multicycle RISC-V implementations with hazard control, FSM sequencing, and self-checking ModelSim verification."
 project_group: coursework-archive
-tags:
-  - SystemVerilog
-  - Computer Architecture
-  - FSM
-  - Datapath
-  - RISC-V
-  - Hardware Design
-  - Simulation
+display_year: "2024"
+period: "Fall 2024"
+sort_key: "2024-Fall"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+venue: "Rensselaer Polytechnic Institute · ECSE 4770 Computer Hardware Design"
+tags: ["SystemVerilog","RISC-V","Pipeline Control","ModelSim"]
+term: "Fall 2024"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 4770"
+  course_name: "Computer Hardware Design"
 ---
 
-This page summarizes the major hardware design skills developed through the laboratories in ECSE 4770 Computer Hardware Design. These labs walk through the full construction of a working RISC-V processor, from combinational logic and finite state machines to a complete multi-cycle and pipelined architecture. The course emphasizes SystemVerilog modeling, hierarchical design, testbench creation and architectural debugging.
+## Five-stage processor
 
-## Core Skills and Tools
+For ECSE 4770, I implemented a RISC-V processor with fetch, decode, execute, memory, and writeback stages. I designed hazard-control logic for operand forwarding, pipeline stalls, and control-flow flushing.
 
-- Modeling combinational and sequential logic in **SystemVerilog**
-- Designing and implementing **structural and behavioral FSMs**
-- Building RISC-V datapath components including ALU, register file and control units
-- Constructing a **single-cycle RISC-V CPU** with full instruction flow
-- Extending the design into a **multi-cycle architecture** with microcoded control
-- Completing a **multi-cycle control unit** using FSM sequencing
-- Implementing **pipelining concepts** and understanding hazards, forwarding and stalls
-- Writing and testing assembly routines for RISC-V programs
-- Creating comprehensive testbenches and waveform-based debugging using ModelSim or equivalent simulators
+The work connected instruction dependencies to datapath selection and pipeline control. Forwarding supplied operands when possible, while stalls and flushes handled cases that required delaying or discarding work.
 
-## Topics Covered
+## Multicycle implementation
 
-- Combinational logic analysis and hierarchical SystemVerilog modules  
-- Structural vs behavioral FSM modeling  
-- ALU design and arithmetic/logic operations  
-- Single-cycle processor design and control signal generation  
-- Multi-cycle datapath and control sequencing  
-- Pipelining concepts (IF, ID, EX, MEM, WB) and hazard behavior  
-- Assembly implementation of functions, stack usage and calling conventions  
+I also designed a multicycle processor with FSM-based control. It shares datapath resources across instruction-execution stages and coordinates register, ALU, memory, and PC updates through the control sequence.
 
-## Outcome
+## Instruction scope and verification
 
-These labs provided hands-on experience implementing and validating real processor components and control structures. By progressing from simple combinational circuits to full RISC-V CPU implementations, the course built strong proficiency in SystemVerilog, computer architecture and simulation-driven hardware debugging. This foundation directly supports later advanced work in GPU kernel research, architecture-aware optimization and embedded hardware projects.
+I implemented R-type arithmetic and load/store, branch, and jump instructions, including lw, sw, beq, and jal. I used self-checking ModelSim testbenches to verify datapath and control behavior.

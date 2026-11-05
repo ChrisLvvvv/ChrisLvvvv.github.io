@@ -3,52 +3,31 @@ title: "Project A4: Concurrent Hash Table and Memory Coherence"
 collection: portfolio
 permalink: /portfolio/fall2025-ecse4320-tracka4/
 date: 2025-11-05
-venue: "ECSE4320 Advanced Computer Systems"
-excerpt: "Comparison of coarse grained and striped locking for a concurrent hash table, focusing on scalability, contention and cache coherence."
+excerpt: "Coarse-grained and striped locking evaluated under read-heavy and write-heavy workloads, with attention to contention and memory-system effects."
 project_group: coursework-archive
-tags:
-  - Concurrency
-  - Hash Table
-  - Locking
-  - Multithreading
-  - Performance
+display_year: "2025"
+period: "Fall 2025"
+sort_key: "2025-Fall"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+venue: "Rensselaer Polytechnic Institute · ECSE 4320 Advanced Computer Systems"
+tags: ["Concurrent Hash Tables","Locking","Pthreads","Cache Coherence"]
+term: "Fall 2025"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 4320"
+  course_name: "Advanced Computer Systems"
 ---
 
-[← Back to ECSE4320 Advanced Computer Systems Overview](/portfolio/fall2025-ecse4320/)
+[← Advanced Computer Systems overview](/portfolio/fall2025-ecse4320/)
 
-This project examined how synchronization design impacts the scalability of concurrent data structures. I implemented a thread safe chained hash table using two locking strategies and benchmarked their behavior under different workloads and thread counts.
+## Synchronization choices
 
-## Design
+I built concurrent hash tables using coarse-grained and striped locking. The two approaches expose different opportunities for parallel access and different sources of synchronization overhead.
 
-- **Core data structure**  
-  - Chained hash table supporting `insert`, `lookup` and `erase`.  
-  - Designed to be accessed concurrently by many threads.
+## Scaling and memory behavior
 
-- **Coarse grained locking**  
-  - Single global mutex guarding all operations.  
-  - Simple to implement and correct, but quickly becomes a bottleneck at higher thread counts.
+I compared scaling under read-heavy and write-heavy workloads. The analysis examined contention, false sharing, and cache-coherence traffic alongside the locking structure.
 
-- **Striped locking**  
-  - Partitioned the table into multiple stripes, each protected by its own mutex.  
-  - Reduced lock contention by allowing operations on different stripes to proceed in parallel.  
-  - Preserved correctness while improving throughput on multicore hardware.
-
-## Benchmarking
-
-- Implemented a benchmark driver in C++ using pthreads.  
-- Evaluated three workload types:  
-  - Lookup only, read dominated scenario.  
-  - Insert only, write heavy stress test.  
-  - Mixed workload with a 70 percent lookup and 30 percent insert split.  
-- Swept thread counts from 1 to 16 and varied key set sizes.  
-- Collected metrics such as throughput, speedup relative to a single thread and fairness across threads.
-
-## Analysis
-
-- Compared scaling behavior of coarse grained and striped locking.  
-- Discussed how Amdahl’s Law and cache coherence effects limit speedup even with more fine grained locking.  
-- Observed that striped locking significantly improved performance for mixed and read heavy workloads, while write heavy workloads remained more constrained by inherent serialization.
-
-## Outcome
-
-This project provided practical experience designing and evaluating concurrent data structures. It highlighted the trade offs between implementation complexity and performance, and emphasized the need to consider both contention and memory system behavior when choosing synchronization strategies.
+This project connected synchronization choices to the memory system: adding threads changes both access concurrency and the traffic required to keep shared data coherent.

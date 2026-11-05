@@ -11,6 +11,13 @@ tags:
   - FSM
   - Hardware Design
   - LogicWorks
+display_year: "2023"
+period: "Fall 2023"
+date_precision: "term"
+work_type: "Coursework"
+term: "Fall 2023"
+work_source:
+  detail: "CPTR Components & Operations"
 ---
 
 This project implements a simplified 4-floor elevator controller as an early hardware design exercise. The controller determines whether to remain on the current floor, move up or move down based on a floor request provided through switches. LEDs display movement direction and a 7-segment display shows the elevator’s position.

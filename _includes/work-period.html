@@ -1,0 +1,34 @@
+{%- comment -%}
+Resolve display dates once for every Work category. Explicit experience months
+are actual CV dates. A course term maps only to a semester display range; it
+never writes start_month/end_month or changes the original publication date.
+{%- endcomment -%}
+{%- assign work_period_project = include.project -%}
+{%- assign work_period_start = '' -%}
+{%- assign work_period_end = '' -%}
+{%- assign work_period_term = '' -%}
+{%- assign work_period_year = work_period_project.display_year | default: '' -%}
+{%- if work_period_year == '' and work_period_project.date -%}
+  {%- assign work_period_year = work_period_project.date | date: '%Y' -%}
+{%- endif -%}
+{%- if work_period_project.start_month -%}
+  {%- assign work_period_start = work_period_project.start_month -%}
+  {%- assign work_period_end = work_period_project.end_month | default: '' -%}
+{%- elsif work_period_project.term -%}
+  {%- assign work_period_term = work_period_project.term -%}
+  {%- assign work_term_parts = work_period_term | split: ' ' -%}
+  {%- assign work_term_season = work_term_parts | first -%}
+  {%- assign work_period_year = work_term_parts | last -%}
+  {%- case work_term_season -%}
+    {%- when 'Fall' -%}
+      {%- assign work_period_start = work_period_year | append: '-08' -%}
+      {%- assign work_period_end = work_period_year | append: '-12' -%}
+    {%- when 'Spring' -%}
+      {%- assign work_period_start = work_period_year | append: '-01' -%}
+      {%- assign work_period_end = work_period_year | append: '-05' -%}
+    {%- when 'Summer' -%}
+      {%- assign work_period_start = work_period_year | append: '-05' -%}
+      {%- assign work_period_end = work_period_year | append: '-08' -%}
+  {%- endcase -%}
+{%- endif -%}
+{%- assign work_period_sort_key = work_period_start | default: work_period_year -%}

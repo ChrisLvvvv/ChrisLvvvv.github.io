@@ -1,27 +1,31 @@
 ---
-title: "Assembly Programming Exercise"
+title: "MIPS Assembly Programming"
 collection: portfolio
 permalink: /portfolio/summer2024-lab2-assembly/
 date: 2024-06-20
-venue: "COMP Architecture & Networks – Summer 2024"
-excerpt: "Implemented low-level routines in assembly, reinforcing ISA-level reasoning and control flow handling."
+excerpt: "Modular MIPS programs using IEEE 754 arithmetic, calculator logic, stack frames, saved registers, and procedure calls."
 project_group: coursework-archive
-tags:
-  - Assembly
-  - ISA
-  - Low-level Programming
+display_year: "2024"
+period: "Summer 2024"
+sort_key: "2024-Summer"
+date_precision: "term"
+work_type: "Coursework"
+work_category: "coursework"
+venue: "Rensselaer Polytechnic Institute · ECSE 2660 Computer Architecture & Networks"
+tags: ["MIPS Assembly","IEEE 754","Calling Conventions","Stack Frames"]
+term: "Summer 2024"
+work_source:
+  organization: "RPI"
+  course_code: "ECSE 2660"
+  course_name: "Computer Architecture & Networks"
 ---
 
-This lab focuses on implementing program logic using assembly instructions. The code exercises core ISA features including arithmetic, branching and basic control structures.
+[← Computer Architecture and OS Fundamentals](/portfolio/computer-architecture-os-fundamentals/)
 
-## My Contribution
-- Wrote assembly routines implementing the required functionality  
-- Verified correctness against provided test conditions  
-- Ensured proper use of registers and flow control  
+## Arithmetic and calculator logic
 
-## Technical Summary
-- **Language:** Assembly  
-- **Concepts:** branch logic, register usage, instruction sequencing  
+I wrote modular MIPS assembly programs involving IEEE 754 floating-point arithmetic and calculator logic. The exercises connected arithmetic operations to register-level data flow and control.
 
-## Outcome
-Gained hands-on experience with ISA-level programming and low-level program structure.
+## Procedure structure
+
+I managed stack frames, saved registers, and procedure calls according to MIPS calling conventions. Structuring the programs around procedures made register ownership and preservation part of the implementation.
